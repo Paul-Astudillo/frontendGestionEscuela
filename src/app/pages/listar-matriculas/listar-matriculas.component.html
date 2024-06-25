@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Lista de Matrículas</h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Curso</th>
+            <th>Año Lectivo</th>
+            <th>Alumno</th>
+            <th>Matrícula</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let matricula of matriculas">
+            <td>{{ matricula.id }}</td>
+            <td>{{ matricula.nombre }}</td>
+            <td>{{ matricula.curso.descripcion }}</td>
+            <td>{{ matricula.anioLectivo.descripcion }}</td>
+            <td>{{ matricula.alumno.nombre }} {{ matricula.alumno.apellido }}</td>
+            <td>{{ matricula.matricula }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

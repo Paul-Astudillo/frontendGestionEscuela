@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Lista de Cursos</h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Docente ID</th>
+            <th>Año Lectivo ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let curso of cursos">
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.descripcion }}</td>
+            <td>{{ curso.docenteId }}</td>
+            <td>{{ curso.anioLectivoId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

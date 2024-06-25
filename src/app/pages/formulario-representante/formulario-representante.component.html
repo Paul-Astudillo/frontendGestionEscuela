@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ representanteId ? 'Editar Representante' : 'Nuevo Representante' }}</h1>
+    <form [formGroup]="representanteForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre    </label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+        <div *ngIf="representanteForm.get('nombre')?.invalid && (representanteForm.get('nombre')?.dirty || representanteForm.get('nombre')?.touched)" class="text-danger">
+          El nombre es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido    </label>
+        <input type="text" id="apellido" class="form-control" formControlName="apellido" />
+        <div *ngIf="representanteForm.get('apellido')?.invalid && (representanteForm.get('apellido')?.dirty || representanteForm.get('apellido')?.touched)" class="text-danger">
+          El apellido es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección    </label>
+        <input type="text" id="direccion" class="form-control" formControlName="direccion" />
+        <div *ngIf="representanteForm.get('direccion')?.invalid && (representanteForm.get('direccion')?.dirty || representanteForm.get('direccion')?.touched)" class="text-danger">
+          La dirección es requerida.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono    </label>
+        <input type="text" id="telefono" class="form-control" formControlName="telefono" />
+        <div *ngIf="representanteForm.get('telefono')?.invalid && (representanteForm.get('telefono')?.dirty || representanteForm.get('telefono')?.touched)" class="text-danger">
+          El teléfono es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="profesion">Profesión    </label>
+        <input type="text" id="profesion" class="form-control" formControlName="profesion" />
+        <div *ngIf="representanteForm.get('profesion')?.invalid && (representanteForm.get('profesion')?.dirty || representanteForm.get('profesion')?.touched)" class="text-danger">
+          La profesión es requerida.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="representanteForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

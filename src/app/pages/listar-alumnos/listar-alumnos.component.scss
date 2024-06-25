@@ -1,0 +1,41 @@
+.container {
+  margin-top: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+thead.thead-dark th {
+  background-color: black;
+  color: #fff;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+td:first-child {
+  font-weight: bold;
+}

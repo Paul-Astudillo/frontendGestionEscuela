@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Lista de Años Lectivos</h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let anioLectivo of aniosLectivos">
+            <td>{{ anioLectivo.id }}</td>
+            <td>{{ anioLectivo.descripcion }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

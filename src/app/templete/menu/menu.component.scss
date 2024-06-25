@@ -1,27 +1,83 @@
-.menu {
-  background-color: #f2f2f2;
-  padding: 10px;
-}
+.menu-container {
+  .nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
 
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+    .nav-item {
+      position: relative;
 
-.menu li {
-  display: inline;
-  margin-right: 10px;
-}
+      .nav-link {
+        display: flex;
+        align-items: center;
+        font-size: 1.25rem;
+        padding: 10px 20px;
+        color: #495057;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
 
-.menu a {
-  text-decoration: none;
-  color: #333;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+        &:hover {
+          background-color: #e9ecef;
+          color: #007bff;
+        }
 
-.menu a:hover {
-  background-color: #ccc;
+        &.active {
+          background-color: #007bff;
+          color: #fff;
+        }
+
+        i {
+          margin-right: 10px;
+        }
+      }
+
+      &.dropdown .nav-link::after {
+        content: ' \25BC';
+        margin-left: 5px;
+        font-size: 0.75rem;
+      }
+
+      &.dropdown.open .nav-link::after {
+        content: ' \25B2';
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+
+        .dropdown-item {
+          display: block;
+          padding: 10px 20px;
+          color: #495057;
+          text-decoration: none;
+
+          &:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+          }
+
+          &.active {
+            background-color: #007bff;
+            color: #fff;
+          }
+        }
+      }
+
+      &.open .dropdown-menu {
+        display: block;
+      }
+    }
+  }
 }

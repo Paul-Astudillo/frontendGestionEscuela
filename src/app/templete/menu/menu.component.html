@@ -1,5 +1,38 @@
-<nav class="menu">
-  <ul>
-    <li><a routerlink="pagina/listaRepresentante" >Listar</a></li>
+<div class="menu-container">
+  <ul class="nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link" (click)="toggleDropdown($event)" href="#">
+        <i class="fas fa-user"></i> Representante
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['/pagina/listaRepresentante']" routerLinkActive="active">Listar Representante</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarRepresentante']" routerLinkActive="active">Registrar Representante</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['pagina/listaAlumno']" routerLinkActive="active">
+        <i class="fas fa-link"></i> Listar Alumno
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['pagina/listaCurso']" routerLinkActive="active">
+        <i class="fas fa-file"></i> Listar Curso
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['pagina/listaDocente']" routerLinkActive="active">
+        <i class="fas fa-file"></i> Listar Docente
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">
+        <i class="fas fa-file"></i> Listar Anio Lectivo
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['pagina/listaMatricula']" routerLinkActive="active">
+        <i class="fas fa-file"></i> Listar Matriculas
+      </a>
+    </li>
   </ul>
-</nav>
+</div>
