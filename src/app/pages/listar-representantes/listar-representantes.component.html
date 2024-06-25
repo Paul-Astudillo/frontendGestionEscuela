@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Listado de Representantes</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Profesión</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let representante of representantes">
+          <td>{{ representante.nombre }}</td>
+          <td>{{ representante.apellido }}</td>
+          <td>{{ representante.direccion }}</td>
+          <td>{{ representante.telefono }}</td>
+          <td>{{ representante.profesion }}</td>
+          <!-- Agrega más columnas según sea necesario -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
