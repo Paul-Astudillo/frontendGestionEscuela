@@ -1,38 +1,64 @@
 <div class="menu-container">
   <ul class="nav">
+    <!-- Dropdown para Representante -->
     <li class="nav-item dropdown">
       <a class="nav-link" (click)="toggleDropdown($event)" href="#">
         <i class="fas fa-user"></i> Representante
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaRepresentante']" routerLinkActive="active">Listar Representante</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaRepresentante']" routerLinkActive="active">Listar Representante</a>
         <a class="dropdown-item" [routerLink]="['pagina/registrarRepresentante']" routerLinkActive="active">Registrar Representante</a>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['pagina/listaAlumno']" routerLinkActive="active">
-        <i class="fas fa-link"></i> Listar Alumno
+    <!-- Dropdown para Año Lectivo -->
+    <li class="nav-item dropdown">
+      <a class="nav-link" (click)="toggleDropdown($event)" href="#">
+        <i class="fas fa-calendar"></i> Año Lectivo
       </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">Listar Año Lectivo</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarAniolectivo']" routerLinkActive="active">Registrar Año Lectivo</a>
+      </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['pagina/listaCurso']" routerLinkActive="active">
-        <i class="fas fa-file"></i> Listar Curso
+    <!-- Dropdown para Matrícula -->
+    <li class="nav-item dropdown">
+      <a class="nav-link" (click)="toggleDropdown($event)" href="#">
+        <i class="fas fa-file-alt"></i> Matrícula
       </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['pagina/listaMatricula']" routerLinkActive="active">Listar Matrículas</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarMatricula']" routerLinkActive="active">Registrar Matrícula</a>
+      </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['pagina/listaDocente']" routerLinkActive="active">
-        <i class="fas fa-file"></i> Listar Docente
+    <!-- Dropdown para Alumno -->
+    <li class="nav-item dropdown">
+      <a class="nav-link" (click)="toggleDropdown($event)" href="#">
+        <i class="fas fa-user-graduate"></i> Alumno
       </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['pagina/listaAlumno']" routerLinkActive="active">Listar Alumno</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarAlumno']" routerLinkActive="active">Registrar Alumno</a>
+      </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">
-        <i class="fas fa-file"></i> Listar Anio Lectivo
+    <!-- Dropdown para Curso -->
+    <li class="nav-item dropdown">
+      <a class="nav-link" (click)="toggleDropdown($event)" href="#">
+        <i class="fas fa-book"></i> Curso
       </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['pagina/listaCurso']" routerLinkActive="active">Listar Curso</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarCurso']" routerLinkActive="active">Registrar Curso</a>
+      </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['pagina/listaMatricula']" routerLinkActive="active">
-        <i class="fas fa-file"></i> Listar Matriculas
+    <!-- Dropdown para Docente -->
+    <li class="nav-item dropdown">
+      <a class="nav-link" (click)="toggleDropdown($event)" href="#">
+        <i class="fas fa-chalkboard-teacher"></i> Docente
       </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['pagina/listaDocente']" routerLinkActive="active">Listar Docente</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarDocente']" routerLinkActive="active">Registrar Docente</a>
+      </div>
     </li>
   </ul>
 </div>

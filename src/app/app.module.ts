@@ -14,6 +14,10 @@ import { ListarDocentesComponent } from './pages/listar-docentes/listar-docentes
 import { ListarAnioLectivoComponent } from './pages/listar-anio-lectivo/listar-anio-lectivo.component';
 import { ListarMatriculasComponent } from './pages/listar-matriculas/listar-matriculas.component';
 import { FormularioRepresentanteComponent } from './pages/formulario-representante/formulario-representante.component';
+import { FormularioAnioLectivoComponent } from './pages/formulario-anio-lectivo/formulario-anio-lectivo.component';
+import { FormularioAlumnoComponent } from './pages/formulario-alumno/formulario-alumno.component';
+import { FormularioDocenteComponent } from './pages/formulario-docente/formulario-docente.component';
+import { FormularioCursoComponent } from './pages/formulario-curso/formulario-curso.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { FormularioRepresentanteComponent } from './pages/formulario-representan
     ListarDocentesComponent,
     ListarAnioLectivoComponent,
     ListarMatriculasComponent,
-    FormularioRepresentanteComponent
+    FormularioRepresentanteComponent,
+    FormularioAnioLectivoComponent,
+    FormularioAlumnoComponent,
+    FormularioDocenteComponent,
+    FormularioCursoComponent
   ],
   imports: [
     BrowserModule,

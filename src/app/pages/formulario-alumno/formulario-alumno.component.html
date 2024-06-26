@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ alumnoId ? 'Editar Alumno' : 'Nuevo Alumno' }}</h1>
+    <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
+      <!-- Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+        <div *ngIf="alumnoForm.get('nombre')?.invalid && (alumnoForm.get('nombre')?.dirty || alumnoForm.get('nombre')?.touched)" class="text-danger">
+          El nombre es requerido.
+        </div>
+      </div>
+      <!-- Apellido -->
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" class="form-control" formControlName="apellido" />
+        <div *ngIf="alumnoForm.get('apellido')?.invalid && (alumnoForm.get('apellido')?.dirty || alumnoForm.get('apellido')?.touched)" class="text-danger">
+          El apellido es requerido.
+        </div>
+      </div>
+      <!-- Cedula -->
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input type="text" id="cedula" class="form-control" formControlName="cedula" />
+        <div *ngIf="alumnoForm.get('cedula')?.invalid && (alumnoForm.get('cedula')?.dirty || alumnoForm.get('cedula')?.touched)" class="text-danger">
+          La cédula es requerida.
+        </div>
+      </div>
+      <!-- Teléfono -->
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" class="form-control" formControlName="telefono" />
+        <div *ngIf="alumnoForm.get('telefono')?.invalid && (alumnoForm.get('telefono')?.dirty || alumnoForm.get('telefono')?.touched)" class="text-danger">
+          El teléfono es requerido.
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email" />
+        <div *ngIf="alumnoForm.get('email')?.invalid && (alumnoForm.get('email')?.dirty || alumnoForm.get('email')?.touched)" class="text-danger">
+          El email es requerido.
+        </div>
+      </div>
+      <!-- Sexo -->
+      <div class="form-group">
+        <label for="sexo">Sexo</label>
+        <select id="sexo" class="form-control" formControlName="sexo">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+        <div *ngIf="alumnoForm.get('sexo')?.invalid && (alumnoForm.get('sexo')?.dirty || alumnoForm.get('sexo')?.touched)" class="text-danger">
+          El sexo es requerido.
+        </div>
+      </div>
+      <!-- Fecha de Nacimiento -->
+      <div class="form-group">
+        <label for="fechaN">Fecha de Nacimiento</label>
+        <input type="date" id="fechaN" class="form-control" formControlName="fechaN" />
+        <div *ngIf="alumnoForm.get('fechaN')?.invalid && (alumnoForm.get('fechaN')?.dirty || alumnoForm.get('fechaN')?.touched)" class="text-danger">
+          La fecha de nacimiento es requerida.
+        </div>
+      </div>
+      <!-- Dirección -->
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" class="form-control" formControlName="direccion" />
+        <div *ngIf="alumnoForm.get('direccion')?.invalid && (alumnoForm.get('direccion')?.dirty || alumnoForm.get('direccion')?.touched)" class="text-danger">
+          La dirección es requerida.
+        </div>
+      </div>
+      <!-- Representante -->
+      <div class="form-group">
+        <label for="representanteId">Representante</label>
+        <select id="representanteId" class="form-control" formControlName="representanteId">
+          <option *ngFor="let representante of representantes" [value]="representante.id">{{ representante.nombre }} {{ representante.apellido }}</option>
+        </select>
+        <div *ngIf="alumnoForm.get('representanteId')?.invalid && (alumnoForm.get('representanteId')?.dirty || alumnoForm.get('representanteId')?.touched)" class="text-danger">
+          El representante es requerido.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="alumnoForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

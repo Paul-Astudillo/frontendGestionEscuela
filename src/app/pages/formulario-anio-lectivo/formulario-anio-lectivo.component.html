@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ anioLectivoId ? 'Editar Año Lectivo' : 'Nuevo Año Lectivo' }}</h1>
+    <form [formGroup]="anioLectivoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" id="descripcion" class="form-control" formControlName="descripcion" />
+        <div *ngIf="anioLectivoForm.get('descripcion')?.invalid && (anioLectivoForm.get('descripcion')?.dirty || anioLectivoForm.get('descripcion')?.touched)" class="text-danger">
+          La descripción es requerida.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="anioLectivoForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

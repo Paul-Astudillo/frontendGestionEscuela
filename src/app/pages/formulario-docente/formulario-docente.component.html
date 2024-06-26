@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ docenteId ? 'Editar Docente' : 'Nuevo Docente' }}</h1>
+    <form [formGroup]="docenteForm" (ngSubmit)="onSubmit()">
+      <!-- Cédula -->
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input type="text" id="cedula" class="form-control" formControlName="cedula" />
+        <div *ngIf="docenteForm.get('cedula')?.invalid && (docenteForm.get('cedula')?.dirty || docenteForm.get('cedula')?.touched)" class="text-danger">
+          La cédula es requerida.
+        </div>
+      </div>
+      <!-- Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+        <div *ngIf="docenteForm.get('nombre')?.invalid && (docenteForm.get('nombre')?.dirty || docenteForm.get('nombre')?.touched)" class="text-danger">
+          El nombre es requerido.
+        </div>
+      </div>
+      <!-- Apellido -->
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" class="form-control" formControlName="apellido" />
+        <div *ngIf="docenteForm.get('apellido')?.invalid && (docenteForm.get('apellido')?.dirty || docenteForm.get('apellido')?.touched)" class="text-danger">
+          El apellido es requerido.
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email" />
+        <div *ngIf="docenteForm.get('email')?.invalid && (docenteForm.get('email')?.dirty || docenteForm.get('email')?.touched)" class="text-danger">
+          El email es requerido.
+        </div>
+      </div>
+      <!-- Teléfono -->
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" class="form-control" formControlName="telefono" />
+        <div *ngIf="docenteForm.get('telefono')?.invalid && (docenteForm.get('telefono')?.dirty || docenteForm.get('telefono')?.touched)" class="text-danger">
+          El teléfono es requerido.
+        </div>
+      </div>
+      <!-- Especialidad -->
+      <div class="form-group">
+        <label for="especialidad">Especialidad</label>
+        <input type="text" id="especialidad" class="form-control" formControlName="especialidad" />
+        <div *ngIf="docenteForm.get('especialidad')?.invalid && (docenteForm.get('especialidad')?.dirty || docenteForm.get('especialidad')?.touched)" class="text-danger">
+          La especialidad es requerida.
+        </div>
+      </div>
+      <!-- Curso -->
+      <div class="form-group">
+        <label for="cursoId">Curso</label>
+        <select id="cursoId" class="form-control" formControlName="cursoId">
+          <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.descripcion }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="docenteForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

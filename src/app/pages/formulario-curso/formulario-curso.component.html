@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container form-container">
+      <h1 class="mb-4 text-center">{{ cursoId ? 'Editar Curso' : 'Nuevo Curso' }}</h1>
+      <form [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+        <!-- Descripción -->
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" class="form-control" formControlName="descripcion" />
+          <div *ngIf="cursoForm.get('descripcion')?.invalid && (cursoForm.get('descripcion')?.dirty || cursoForm.get('descripcion')?.touched)" class="text-danger">
+            La descripción es requerida.
+          </div>
+        </div>
+        <!-- Docente -->
+        <div class="form-group">
+          <label for="docenteId">Docente</label>
+          <select id="docenteId" class="form-control" formControlName="docenteId">
+            <option *ngFor="let docente of docentes" [value]="docente.id">{{ docente.nombre }} {{ docente.apellido }}</option>
+          </select>
+        </div>
+        <!-- Año Lectivo -->
+        <div class="form-group">
+          <label for="anioLectivoId">Año Lectivo</label>
+          <select id="anioLectivoId" class="form-control" formControlName="anioLectivoId">
+            <option *ngFor="let anio of aniosLectivos" [value]="anio.id">{{ anio.descripcion }}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="cursoForm.invalid">Guardar</button>
+      </form>
+    </div>
+  </div>
+  
