@@ -1,3 +1,4 @@
+<!-- src/app/pages/listar-alumnos/listar-alumnos.component.html -->
 <div class="container mt-5">
   <h1 class="mb-4">Lista de Alumnos</h1>
   <div class="table-responsive">
@@ -14,6 +15,7 @@
           <th>Fecha de Nacimiento</th>
           <th>Dirección</th>
           <th>Representante</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +30,10 @@
           <td>{{ alumno.fechaN | date: 'yyyy-MM-dd' }}</td>
           <td>{{ alumno.direccion }}</td>
           <td>{{ alumno.representante?.nombre }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" [routerLink]="['/pagina/registrarAlumno', alumno.id]">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarAlumno(alumno.id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
     </table>

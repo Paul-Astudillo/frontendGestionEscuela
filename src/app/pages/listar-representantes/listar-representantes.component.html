@@ -1,3 +1,4 @@
+<!-- src/app/listar-representantes/listar-representantes.component.html -->
 <div class="container mt-5">
   <h1 class="mb-4">Lista de Representantes</h1>
   <div class="table-responsive">
@@ -10,6 +11,7 @@
           <th>Dirección</th>
           <th>Teléfono</th>
           <th>Profesión</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +22,10 @@
           <td>{{ representante.direccion }}</td>
           <td>{{ representante.telefono }}</td>
           <td>{{ representante.profesion }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" [routerLink]="['/pagina/registrarRepresentante', representante.id]">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarRepresentante(representante.id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
     </table>

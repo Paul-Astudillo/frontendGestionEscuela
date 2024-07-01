@@ -29,8 +29,8 @@ export class FormularioCursoComponent {
   ) {
     this.cursoForm = this.fb.group({
       descripcion: ['', Validators.required],
-      docenteId: [''],
-      anioLectivoId: ['']
+      docenteId: ['', Validators.required],
+      anioLectivoId: ['', Validators.required]
     });
   }
 

@@ -1,0 +1,39 @@
+<!-- src/app/formulario-usuario/formulario-usuario.component.html -->
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ usuarioForm.get('id')?.value ? 'Editar Usuario' : 'Nuevo Usuario' }}</h1>
+    <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" class="form-control" formControlName="usuario" />
+        <div *ngIf="usuarioForm.get('usuario')?.invalid && (usuarioForm.get('usuario')?.dirty || usuarioForm.get('usuario')?.touched)" class="text-danger">
+          El usuario es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password" />
+        <div *ngIf="usuarioForm.get('password')?.invalid && (usuarioForm.get('password')?.dirty || usuarioForm.get('password')?.touched)" class="text-danger">
+          La contraseña es requerida.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" id="estado" class="form-control" formControlName="estado" />
+        <div *ngIf="usuarioForm.get('estado')?.invalid && (usuarioForm.get('estado')?.dirty || usuarioForm.get('estado')?.touched)" class="text-danger">
+          El estado es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rolId">Rol</label>
+        <select id="rolId" class="form-control" formControlName="rolId">
+          <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.descripcion }}</option>
+        </select>
+        <div *ngIf="usuarioForm.get('rolId')?.invalid && (usuarioForm.get('rolId')?.dirty || usuarioForm.get('rolId')?.touched)" class="text-danger">
+          El rol es requerido.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

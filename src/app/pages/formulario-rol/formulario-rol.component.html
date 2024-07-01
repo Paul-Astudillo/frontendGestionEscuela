@@ -1,0 +1,16 @@
+<!-- src/app/formulario-rol/formulario-rol.component.html -->
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ rolForm.get('id')?.value ? 'Editar Rol' : 'Nuevo Rol' }}</h1>
+    <form [formGroup]="rolForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" id="descripcion" class="form-control" formControlName="descripcion" />
+        <div *ngIf="rolForm.get('descripcion')?.invalid && (rolForm.get('descripcion')?.dirty || rolForm.get('descripcion')?.touched)" class="text-danger">
+          La descripción es requerida.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="rolForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

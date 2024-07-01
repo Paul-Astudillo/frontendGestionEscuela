@@ -11,6 +11,10 @@ import { FormularioAnioLectivoComponent } from './pages/formulario-anio-lectivo/
 import { FormularioAlumnoComponent } from './pages/formulario-alumno/formulario-alumno.component';
 import { FormularioDocenteComponent } from './pages/formulario-docente/formulario-docente.component';
 import { FormularioCursoComponent } from './pages/formulario-curso/formulario-curso.component';
+import { ListarUsuarioComponent } from './pages/listar-usuario/listar-usuario.component';
+import { ListarRolComponent } from './pages/listar-rol/listar-rol.component';
+import { FormularioRolComponent } from './pages/formulario-rol/formulario-rol.component';
+import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
 
 const routes: Routes = [
   { path: 'pagina/listaRepresentante', component: ListarRepresentantesComponent },
@@ -20,10 +24,21 @@ const routes: Routes = [
   { path: 'pagina/listaAnioLectivo', component: ListarAnioLectivoComponent },
   { path: 'pagina/listaMatricula', component: ListarMatriculasComponent },
   { path: 'pagina/registrarRepresentante', component: FormularioRepresentanteComponent },
+  { path: 'pagina/registrarRepresentante/:id', component: FormularioRepresentanteComponent },  // Ruta para edición
   { path: 'pagina/registrarAniolectivo', component: FormularioAnioLectivoComponent },
+  { path: 'pagina/registrarAniolectivo/:id', component: FormularioAnioLectivoComponent },//edicion
   { path: 'pagina/registrarAlumno', component: FormularioAlumnoComponent },
+  { path: 'pagina/registrarAlumno/:id', component: FormularioAlumnoComponent },//edicion
   { path: 'pagina/registrarDocente', component: FormularioDocenteComponent },
-  { path: 'pagina/registrarCurso', component: FormularioCursoComponent }
+  { path: 'pagina/registrarDocente/:id', component: FormularioDocenteComponent },//edicion
+  { path: 'pagina/registrarCurso', component: FormularioCursoComponent },
+  { path: 'pagina/registrarCurso/:id', component: FormularioCursoComponent },///edicion
+  { path: 'pagina/listaUsuario', component: ListarUsuarioComponent },
+  { path: 'pagina/listaRol', component: ListarRolComponent },
+  { path: 'pagina/registrarRol', component: FormularioRolComponent },
+  { path: 'pagina/registrarUsuario', component: FormularioUsuarioComponent },
+  { path: '', redirectTo: '/usuarios', pathMatch: 'full' }
+
 
 
 

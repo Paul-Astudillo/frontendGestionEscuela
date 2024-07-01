@@ -18,6 +18,10 @@ import { FormularioAnioLectivoComponent } from './pages/formulario-anio-lectivo/
 import { FormularioAlumnoComponent } from './pages/formulario-alumno/formulario-alumno.component';
 import { FormularioDocenteComponent } from './pages/formulario-docente/formulario-docente.component';
 import { FormularioCursoComponent } from './pages/formulario-curso/formulario-curso.component';
+import { ListarUsuarioComponent } from './pages/listar-usuario/listar-usuario.component';
+import { ListarRolComponent } from './pages/listar-rol/listar-rol.component';
+import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
+import { FormularioRolComponent } from './pages/formulario-rol/formulario-rol.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { FormularioCursoComponent } from './pages/formulario-curso/formulario-cu
     FormularioAnioLectivoComponent,
     FormularioAlumnoComponent,
     FormularioDocenteComponent,
-    FormularioCursoComponent
+    FormularioCursoComponent,
+    ListarUsuarioComponent,
+    ListarRolComponent,
+    FormularioUsuarioComponent,
+    FormularioRolComponent
   ],
   imports: [
     BrowserModule,

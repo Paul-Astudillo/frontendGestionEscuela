@@ -26,4 +26,17 @@ export class ListarAnioLectivoComponent {
       }
     );
   }
+
+  eliminarAnioLectivo(id: number): void {
+    if (confirm('¿Está seguro de que desea eliminar este año lectivo?')) {
+      this.anioLectivoService.delete(id).subscribe(
+        () => {
+          this.obtenerAniosLectivos(); // Refrescar la lista después de eliminar
+        },
+        (error) => {
+          console.error('Error al eliminar el año lectivo', error);
+        }
+      );
+    }
+  }
 }

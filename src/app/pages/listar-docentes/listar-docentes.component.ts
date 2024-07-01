@@ -27,4 +27,17 @@ export class ListarDocentesComponent {
     );
   }
 
+  eliminarDocente(id: number): void {
+    if (confirm('¿Está seguro de que desea eliminar este docente?')) {
+      this.docenteService.delete(id).subscribe(
+        () => {
+          this.obtenerDocentes(); // Refrescar la lista después de eliminar
+        },
+        (error) => {
+          console.error('Error al eliminar el docente', error);
+        }
+      );
+    }
+  }
+
 }

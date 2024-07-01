@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RepresentanteService } from 'src/app/service/representante.service';
 import { Representante } from 'src/domain/representante';
 
@@ -18,13 +19,26 @@ export class ListarRepresentantesComponent implements OnInit {
 
   obtenerRepresentantes(): void {
     this.representanteService.getAll().subscribe(
-      (data: Representante[]) => { // Asegurarse de que el tipo sea Representante[]
+      (data: Representante[]) => {
         this.representantes = data;
       },
       (error) => {
         console.error('Error al obtener los representantes', error);
       }
     );
+  }
+
+  eliminarRepresentante(id: number): void {
+    if (confirm('¿Está seguro de que desea eliminar este representante?')) {
+      this.representanteService.delete(id).subscribe(
+        () => {
+          this.obtenerRepresentantes(); // Refrescar la lista después de eliminar
+        },
+        (error) => {
+          console.error('Error al eliminar el representante', error);
+        }
+      );
+    }
   }
 }
 

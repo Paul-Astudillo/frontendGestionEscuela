@@ -27,4 +27,16 @@ export class ListarCursosComponent {
     );
   }
 
+  eliminarCurso(id: number): void {
+    if (confirm('¿Está seguro de que desea eliminar este curso?')) {
+      this.cursoService.delete(id).subscribe(
+        () => {
+          this.obtenerCursos(); // Refrescar la lista después de eliminar
+        },
+        (error) => {
+          console.error('Error al eliminar el curso', error);
+        }
+      );
+    }
+  }
 }

@@ -15,12 +15,10 @@ import { Docente } from 'src/domain/docente';
 export class FormularioDocenteComponent {
   docenteForm: FormGroup;
   docenteId: number | null = null;
-  cursos: Curso[] = [];
 
   constructor(
     private fb: FormBuilder,
     private docenteService: DocenteService,
-    private cursoService: CursoService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -31,7 +29,7 @@ export class FormularioDocenteComponent {
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', Validators.required],
       especialidad: ['', Validators.required],
-      cursoId: ['']
+      cursoId: ['', Validators.required]
     });
   }
 
@@ -43,10 +41,6 @@ export class FormularioDocenteComponent {
         error => console.error('Error al cargar el docente', error)
       );
     }
-    this.cursoService.getAll().subscribe(
-      data => this.cursos = data,
-      error => console.error('Error al cargar los cursos', error)
-    );
   }
 
   onSubmit(): void {

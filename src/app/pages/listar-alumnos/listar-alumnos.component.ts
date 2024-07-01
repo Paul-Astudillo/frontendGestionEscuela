@@ -27,4 +27,16 @@ export class ListarAlumnosComponent {
     );
   }
 
+  eliminarAlumno(id: number): void {
+    if (confirm('¿Está seguro de que desea eliminar este alumno?')) {
+      this.alumnoService.delete(id).subscribe(
+        () => {
+          this.obtenerAlumnos(); // Refrescar la lista después de eliminar
+        },
+        (error) => {
+          console.error('Error al eliminar el alumno', error);
+        }
+      );
+    }
+  }
 }
