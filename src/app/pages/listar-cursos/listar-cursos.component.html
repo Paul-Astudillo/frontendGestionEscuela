@@ -1,4 +1,4 @@
-<!-- src/app/pages/listar-cursos/listar-cursos.component.html -->
+
 <div class="container mt-5">
   <h1 class="mb-4">Lista de Cursos</h1>
   <div class="table-responsive">
@@ -7,8 +7,8 @@
         <tr>
           <th>ID</th>
           <th>Descripción</th>
-          <th>Docente ID</th>
-          <th>Año Lectivo ID</th>
+          <th>Docente</th>
+          <th>Año Lectivo</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -16,8 +16,8 @@
         <tr *ngFor="let curso of cursos">
           <td>{{ curso.id }}</td>
           <td>{{ curso.descripcion }}</td>
-          <td>{{ curso.docenteId }}</td>
-          <td>{{ curso.anioLectivoId }}</td>
+          <td>{{ curso.docenteId }} - {{ curso.docente?.nombre }} {{ curso.docente?.apellido }}</td>
+          <td>{{ curso.anioLectivoId }} - {{ curso.anioLectivo?.descripcion }}</td>
           <td>
             <button class="btn btn-primary btn-sm" [routerLink]="['/pagina/registrarCurso', curso.id]">Editar</button>
             <button class="btn btn-danger btn-sm" (click)="eliminarCurso(curso.id)">Eliminar</button>

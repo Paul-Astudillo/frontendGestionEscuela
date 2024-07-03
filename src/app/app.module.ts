@@ -22,6 +22,7 @@ import { ListarUsuarioComponent } from './pages/listar-usuario/listar-usuario.co
 import { ListarRolComponent } from './pages/listar-rol/listar-rol.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
 import { FormularioRolComponent } from './pages/formulario-rol/formulario-rol.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormularioRolComponent } from './pages/formulario-rol/formulario-rol.co
     ListarUsuarioComponent,
     ListarRolComponent,
     FormularioUsuarioComponent,
-    FormularioRolComponent
+    FormularioRolComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

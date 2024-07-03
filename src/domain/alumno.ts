@@ -1,4 +1,4 @@
-import { Representante } from './representante'; // Ajusta la ruta según tu estructura de archivos
+import { Representante } from "./representante";
 
 export class Alumno {
   id: number;

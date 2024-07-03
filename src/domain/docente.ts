@@ -1,3 +1,6 @@
+import { Curso } from "./curso";
+
+
 export class Docente {
   id: number;
   cedula: string;
@@ -6,7 +9,7 @@ export class Docente {
   email: string;
   telefono: string;
   especialidad: string;
-  cursoId?: number;
+  curso?: Curso;
 
   constructor(init?: Partial<Docente>) {
     this.id = init?.id ?? 0;
@@ -16,6 +19,6 @@ export class Docente {
     this.email = init?.email ?? '';
     this.telefono = init?.telefono ?? '';
     this.especialidad = init?.especialidad ?? '';
-    this.cursoId = init?.cursoId;
+    this.curso = init?.curso;
   }
 }

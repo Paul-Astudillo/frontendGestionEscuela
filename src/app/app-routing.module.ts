@@ -15,6 +15,7 @@ import { ListarUsuarioComponent } from './pages/listar-usuario/listar-usuario.co
 import { ListarRolComponent } from './pages/listar-rol/listar-rol.component';
 import { FormularioRolComponent } from './pages/formulario-rol/formulario-rol.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 const routes: Routes = [
   { path: 'pagina/listaRepresentante', component: ListarRepresentantesComponent },
@@ -37,7 +38,9 @@ const routes: Routes = [
   { path: 'pagina/listaRol', component: ListarRolComponent },
   { path: 'pagina/registrarRol', component: FormularioRolComponent },
   { path: 'pagina/registrarUsuario', component: FormularioUsuarioComponent },
-  { path: '', redirectTo: '/usuarios', pathMatch: 'full' }
+  //{ path: '', redirectTo: '/usuarios', pathMatch: 'full' },
+  { path: 'inicio', component: InicioComponent },  // Ruta para la página de inicio
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' }  // Redirección a la página de inicio
 
 
 

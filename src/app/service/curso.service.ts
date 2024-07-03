@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Curso } from 'src/domain/curso';
 
 @Injectable({
@@ -12,11 +12,29 @@ export class CursoService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(`${this.apiUrl}/List`);
+    return this.http.get<any[]>(`${this.apiUrl}/List`).pipe(
+      map(data => data.map(item => new Curso({
+        id: item.id,
+        descripcion: item.descripcion,
+        docenteId: item.docente ? item.docente.id : null,
+        anioLectivoId: item.anioLectivo ? item.anioLectivo.id : null,
+        docente: item.docente ? { id: item.docente.id, nombre: item.docente.nombre, apellido: item.docente.apellido } : undefined,
+        anioLectivo: item.anioLectivo ? { id: item.anioLectivo.id, descripcion: item.anioLectivo.descripcion } : undefined
+      })))
+    );
   }
 
   getById(id: number): Observable<Curso> {
-    return this.http.get<Curso>(`${this.apiUrl}/buscar/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/buscar/${id}`).pipe(
+      map(item => new Curso({
+        id: item.id,
+        descripcion: item.descripcion,
+        docenteId: item.docente ? item.docente.id : null,
+        anioLectivoId: item.anioLectivo ? item.anioLectivo.id : null,
+        docente: item.docente ? { id: item.docente.id, nombre: item.docente.nombre, apellido: item.docente.apellido } : undefined,
+        anioLectivo: item.anioLectivo ? { id: item.anioLectivo.id, descripcion: item.anioLectivo.descripcion } : undefined
+      }))
+    );
   }
 
   save(curso: Curso): Observable<Curso> {

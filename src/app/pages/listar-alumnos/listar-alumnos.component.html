@@ -29,7 +29,7 @@
           <td>{{ alumno.sexo }}</td>
           <td>{{ alumno.fechaN | date: 'yyyy-MM-dd' }}</td>
           <td>{{ alumno.direccion }}</td>
-          <td>{{ alumno.representante?.nombre }}</td>
+          <td>{{ alumno.representante?.id }} - {{ alumno.representante?.nombre }} {{ alumno.representante?.apellido }}</td>
           <td>
             <button class="btn btn-primary btn-sm" [routerLink]="['/pagina/registrarAlumno', alumno.id]">Editar</button>
             <button class="btn btn-danger btn-sm" (click)="eliminarAlumno(alumno.id)">Eliminar</button>

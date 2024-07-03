@@ -13,6 +13,7 @@
           <th>Teléfono</th>
           <th>Especialidad</th>
           <th>Curso ID</th>
+          <th>Curso Nombre</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -25,7 +26,8 @@
           <td>{{ docente.email }}</td>
           <td>{{ docente.telefono }}</td>
           <td>{{ docente.especialidad }}</td>
-          <td>{{ docente.cursoId }}</td>
+          <td>{{ docente.curso?.id }}</td>
+          <td>{{ docente.curso?.descripcion }}</td>
           <td>
             <button class="btn btn-primary btn-sm" [routerLink]="['/pagina/registrarDocente', docente.id]">Editar</button>
             <button class="btn btn-danger btn-sm" (click)="eliminarDocente(docente.id)">Eliminar</button>

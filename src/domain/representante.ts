@@ -1,3 +1,4 @@
+// src/domain/representante.ts
 export class Representante {
   id: number;
   nombre: string;

@@ -37,35 +37,38 @@ export class FormularioAlumnoComponent {
   }
 
   ngOnInit(): void {
-    this.alumnoId = this.route.snapshot.paramMap.get('id') ? +this.route.snapshot.paramMap.get('id')! : null;
-    if (this.alumnoId) {
-      this.alumnoService.getById(this.alumnoId).subscribe(
-        data => this.alumnoForm.patchValue(data),
-        error => console.error('Error al cargar el alumno', error)
-      );
-    }
-    this.representanteService.getAll().subscribe(
-      data => this.representantes = data,
-      error => console.error('Error al cargar los representantes', error)
-    );
+    this.route.paramMap.subscribe(params => {
+      this.alumnoId = +params.get('id')!;
+      if (this.alumnoId) {
+        this.alumnoService.getById(this.alumnoId).subscribe((alumno: Alumno) => {
+          // Convertir fecha
+          alumno.fechaN = new Date(alumno.fechaN);
+          this.alumnoForm.patchValue(alumno);
+        });
+      }
+    });
+
+    this.representanteService.getAll().subscribe((data: Representante[]) => {
+      this.representantes = data;
+    });
   }
 
   onSubmit(): void {
-    if (this.alumnoForm.valid) {
-      const alumno: Alumno = this.alumnoForm.value;
-      if (this.alumnoId) {
-        alumno.id = this.alumnoId;
-        this.alumnoService.update(alumno).subscribe(
-          () => this.router.navigate(['/pagina/listaAlumno']),
-          error => console.error('Error al actualizar el alumno', error)
-        );
-      } else {
-        this.alumnoService.save(alumno).subscribe(
-          () => this.router.navigate(['/pagina/listaAlumno']),
-          error => console.error('Error al guardar el alumno', error)
-        );
-      }
+    if (this.alumnoForm.invalid) {
+      return;
+    }
+
+    const alumno: Alumno = new Alumno(this.alumnoForm.value);
+
+    if (this.alumnoId) {
+      alumno.id = this.alumnoId;
+      this.alumnoService.update(alumno).subscribe(() => {
+        this.router.navigate(['/pagina/listaAlumno']);
+      });
+    } else {
+      this.alumnoService.save(alumno).subscribe(() => {
+        this.router.navigate(['/pagina/listaAlumno']);
+      });
     }
   }
-
 }

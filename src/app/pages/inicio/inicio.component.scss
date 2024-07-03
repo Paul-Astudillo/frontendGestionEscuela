@@ -1,0 +1,93 @@
+.inicio-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .banner {
+    background-color:#007bff;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    animation: slideIn 2s ease-in-out;
+  }
+  
+  .banner h1 {
+    font-size: 3em;
+    margin: 0;
+  }
+  
+  .banner p {
+    font-size: 1.5em;
+    margin: 10px 0 0;
+  }
+  
+  .content {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .info, .features {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: popIn 1s ease-in-out;
+  }
+  
+  .features ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .features li {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%234CAF50" d="M6 10.793l8.146-8.147a.5.5 0 11.707.707l-8.5 8.5a.5.5 0 01-.707 0l-4-4a.5.5 0 11.707-.707L6 10.793z"/></svg>') no-repeat left center;
+    padding-left: 20px;
+    margin: 5px 0;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Additional styles for JS animations */
+  .features li.hover {
+    background-color: #e8f5e9;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .blinking {
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .content.appear {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
