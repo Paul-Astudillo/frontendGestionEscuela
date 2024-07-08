@@ -1,0 +1,51 @@
+<div class="container">
+  <h1 class="text-center">Lista de Facturas</h1>
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Código Factura</th>
+          <th>Cédula</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Fecha Emisión</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas" (click)="seleccionarFactura(factura.id)">
+          <td>{{ factura.id }}</td>
+          <td>{{ factura.codigoFactura }}</td>
+          <td>{{ factura.cedula }}</td>
+          <td>{{ factura.direccion }}</td>
+          <td>{{ factura.telefono }}</td>
+          <td>{{ factura.fechaEmision }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="editarFactura(factura.id, $event)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarFactura(factura.id, $event)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="facturaSeleccionada" class="factura-detalles">
+    <h2>Detalles de la Factura</h2>
+    <p><strong>ID:</strong> {{ facturaSeleccionada.id }}</p>
+    <p><strong>Código Factura:</strong> {{ facturaSeleccionada.codigoFactura }}</p>
+    <p><strong>Cédula:</strong> {{ facturaSeleccionada.cedula }}</p>
+    <p><strong>Dirección:</strong> {{ facturaSeleccionada.direccion }}</p>
+    <p><strong>Teléfono:</strong> {{ facturaSeleccionada.telefono }}</p>
+    <p><strong>Fecha de Emisión:</strong> {{ facturaSeleccionada.fechaEmision }}</p>
+    <h3>Detalle Factura</h3>
+    <div *ngFor="let detalle of detallesFactura">
+      <p><strong>Cantidad:</strong> {{ detalle.cantidad }}</p>
+      <p><strong>Subtotal:</strong> {{ detalle.subtotal }}</p>
+      <p><strong>Total:</strong> {{ detalle.total }}</p>
+      <p><strong>Detalle:</strong> {{ detalle.detalle }}</p>
+      <p><strong>IVA:</strong> {{ detalle.iva }}</p>
+      <p><strong>Matrícula ID:</strong> {{ detalle.matriculaId }}</p>
+    </div>
+  </div>
+</div>

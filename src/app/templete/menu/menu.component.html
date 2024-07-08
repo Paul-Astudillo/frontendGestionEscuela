@@ -6,8 +6,8 @@
         <i class="fas fa-user"></i> Representante
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaRepresentante']" routerLinkActive="active">Listar Representante</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarRepresentante']" routerLinkActive="active">Registrar Representante</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaRepresentante']" routerLinkActive="active">Listar Representante</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarRepresentante']" routerLinkActive="active">Registrar Representante</a>
       </div>
     </li>
     <!-- Dropdown para Año Lectivo -->
@@ -16,8 +16,8 @@
         <i class="fas fa-calendar"></i> Año Lectivo
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaAnioLectivo']" routerLinkActive="active">Listar Año Lectivo</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarAniolectivo']" routerLinkActive="active">Registrar Año Lectivo</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">Listar Año Lectivo</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarAniolectivo']" routerLinkActive="active">Registrar Año Lectivo</a>
       </div>
     </li>
     <!-- Dropdown para Matrícula -->
@@ -26,8 +26,8 @@
         <i class="fas fa-file-alt"></i> Matrícula
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaMatricula']" routerLinkActive="active">Listar Matrículas</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarMatricula']" routerLinkActive="active">Registrar Matrícula</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaMatricula']" routerLinkActive="active">Listar Matrículas</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarMatricula']" routerLinkActive="active">Registrar Matrícula</a>
       </div>
     </li>
     <!-- Dropdown para Alumno -->
@@ -36,8 +36,8 @@
         <i class="fas fa-user-graduate"></i> Alumno
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaAlumno']" routerLinkActive="active">Listar Alumno</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarAlumno']" routerLinkActive="active">Registrar Alumno</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaAlumno']" routerLinkActive="active">Listar Alumno</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarAlumno']" routerLinkActive="active">Registrar Alumno</a>
       </div>
     </li>
     <!-- Dropdown para Curso -->
@@ -46,8 +46,8 @@
         <i class="fas fa-book"></i> Curso
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaCurso']" routerLinkActive="active">Listar Curso</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarCurso']" routerLinkActive="active">Registrar Curso</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaCurso']" routerLinkActive="active">Listar Curso</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarCurso']" routerLinkActive="active">Registrar Curso</a>
       </div>
     </li>
     <!-- Dropdown para Docente -->
@@ -56,8 +56,8 @@
         <i class="fas fa-chalkboard-teacher"></i> Docente
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaDocente']" routerLinkActive="active">Listar Docente</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarDocente']" routerLinkActive="active">Registrar Docente</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaDocente']" routerLinkActive="active">Listar Docente</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarDocente']" routerLinkActive="active">Registrar Docente</a>
       </div>
     </li>
     <!-- Dropdown para Usuario -->
@@ -66,8 +66,8 @@
         <i class="fas fa-chalkboard-teacher"></i> Usuario
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaUsuario']" routerLinkActive="active">Listar Usuario</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarUsuario']" routerLinkActive="active">Registrar Usuario</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaUsuario']" routerLinkActive="active">Listar Usuario</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarUsuario']" routerLinkActive="active">Registrar Usuario</a>
       </div>
     </li>
     <!-- Dropdown para Rol -->
@@ -76,10 +76,24 @@
         <i class="fas fa-chalkboard-teacher"></i> Rol
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['/pagina/listaRol']" routerLinkActive="active">Listar Rol</a>
-        <a class="dropdown-item" [routerLink]="['/pagina/registrarRol']" routerLinkActive="active">Registrar Rol</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaRol']" routerLinkActive="active">Listar Rol</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarRol']" routerLinkActive="active">Registrar Rol</a>
       </div>
     </li>
+
+
+        <!-- Dropdown para Factura -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
+            <i class="fas fa-chalkboard-teacher"></i> Factura
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['pagina/listarFactura']" routerLinkActive="active">Listar Factura</a>
+            <a class="dropdown-item" [routerLink]="['pagina/registrarFactura']" routerLinkActive="active">Registrar Factura</a>
+          </div>
+        </li>
+
+
   </ul>
 </div>
 

@@ -23,6 +23,11 @@ import { ListarRolComponent } from './pages/listar-rol/listar-rol.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
 import { FormularioRolComponent } from './pages/formulario-rol/formulario-rol.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { FormularioMatriculaComponent } from './pages/formulario-matricula/formulario-matricula.component';
+import { ListarFacturaComponent } from './pages/listar-factura/listar-factura.component';
+import { FormularioFacturaComponent } from './pages/formulario-factura/formulario-factura.component';
+import { FooterComponent } from './templete/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +49,11 @@ import { InicioComponent } from './pages/inicio/inicio.component';
     ListarRolComponent,
     FormularioUsuarioComponent,
     FormularioRolComponent,
-    InicioComponent
+    InicioComponent,
+    FormularioMatriculaComponent,
+    ListarFacturaComponent,
+    FormularioFacturaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

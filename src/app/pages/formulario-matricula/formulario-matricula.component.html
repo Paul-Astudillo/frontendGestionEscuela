@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container form-container">
+    <h1 class="mb-4 text-center">{{ matriculaId ? 'Editar Matrícula' : 'Nueva Matrícula' }}</h1>
+    <form [formGroup]="matriculaForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+        <div *ngIf="matriculaForm.get('nombre')?.invalid && (matriculaForm.get('nombre')?.dirty || matriculaForm.get('nombre')?.touched)" class="text-danger">
+          El nombre es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cursoId">Curso</label>
+        <select id="cursoId" class="form-control" formControlName="cursoId">
+          <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.descripcion }}</option>
+        </select>
+        <div *ngIf="matriculaForm.get('cursoId')?.invalid && (matriculaForm.get('cursoId')?.dirty || matriculaForm.get('cursoId')?.touched)" class="text-danger">
+          El curso es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="anioLectivoId">Año Lectivo</label>
+        <select id="anioLectivoId" class="form-control" formControlName="anioLectivoId">
+          <option *ngFor="let anioLectivo of anioLectivos" [value]="anioLectivo.id">{{ anioLectivo.descripcion }}</option>
+        </select>
+        <div *ngIf="matriculaForm.get('anioLectivoId')?.invalid && (matriculaForm.get('anioLectivoId')?.dirty || matriculaForm.get('anioLectivoId')?.touched)" class="text-danger">
+          El año lectivo es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="alumnoId">Alumno</label>
+        <select id="alumnoId" class="form-control" formControlName="alumnoId">
+          <option *ngFor="let alumno of alumnos" [value]="alumno.id">{{ alumno.nombre }} {{ alumno.apellido }}</option>
+        </select>
+        <div *ngIf="matriculaForm.get('alumnoId')?.invalid && (matriculaForm.get('alumnoId')?.dirty || matriculaForm.get('alumnoId')?.touched)" class="text-danger">
+          El alumno es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="matricula">Matrícula</label>
+        <input type="text" id="matricula" class="form-control" formControlName="matricula" />
+        <div *ngIf="matriculaForm.get('matricula')?.invalid && (matriculaForm.get('matricula')?.dirty || matriculaForm.get('matricula')?.touched)" class="text-danger">
+          La matrícula es requerida.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="matriculaForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>
