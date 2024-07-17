@@ -1,42 +1,101 @@
+/* src/app/pages/listar-matriculas/listar-matriculas.component.scss */
 .container {
-    margin-top: 20px;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-  }
-  
-  .table-responsive {
-    margin-top: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  thead.thead-dark th {
-    background-color: black;
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-  
-  tbody tr:hover {
-    background-color: whitesmoke;
-    cursor: pointer;
-  }
-  
-  td:first-child {
-    font-weight: bold;
-  }
-  
+  margin-top: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.table-responsive {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #343a40;
+  color: #fff;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+td:first-child {
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #87b4e4;
+  border-color: #87b4e4;
+}
+
+.btn-primary:hover {
+  background-color: #296bb0;
+  border-color: #296bb0;
+}
+
+.btn-danger {
+  background-color: #e58d95;
+  border-color: #e58d95;
+}
+
+.btn-danger:hover {
+  background-color: #bb3946;
+  border-color: #bb3946;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn i {
+  margin-right: 5px;
+}

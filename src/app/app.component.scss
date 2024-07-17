@@ -1,8 +1,12 @@
 .titulo {
-    display: flex;
     justify-content: center;
     float: center;
   }
 .cuerpo{
   background-color: rgb(230, 230, 230);
+  width: 100%;
+}
+.footer{
+  display: flex;
+  padding: 30px;
 }
