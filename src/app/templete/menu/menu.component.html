@@ -1,99 +1,88 @@
 <div class="menu-container">
   <ul class="nav">
     <!-- Dropdown para Representante -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-user"></i> Representante
-      </a>
+        <i class="fas fa-user"></i> Representantes </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaRepresentante']" routerLinkActive="active">Listar Representante</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarRepresentante']" routerLinkActive="active">Registrar Representante</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaRepresentante']" routerLinkActive="active" (click)="closeDropdown($event)">Lista de Representantes</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarRepresentante']" routerLinkActive="active" (click)="closeDropdown($event)">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Año Lectivo -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-calendar"></i> Año Lectivo
-      </a>
+        <i class="fas fa-calendar"></i> Año Lectivo </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">Listar Año Lectivo</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarAniolectivo']" routerLinkActive="active">Registrar Año Lectivo</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">Lista de Años Lectivos</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarAniolectivo']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Matrícula -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-file-alt"></i> Matrícula
-      </a>
+        <i class="fas fa-file-alt"></i> Matrículas </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaMatricula']" routerLinkActive="active">Listar Matrículas</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarMatricula']" routerLinkActive="active">Registrar Matrícula</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaMatricula']" routerLinkActive="active">Lista de Matriculas</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarMatricula']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Alumno -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-user-graduate"></i> Alumno
-      </a>
+        <i class="fas fa-user-graduate"></i> Alumnos </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaAlumno']" routerLinkActive="active">Listar Alumno</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarAlumno']" routerLinkActive="active">Registrar Alumno</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaAlumno']" routerLinkActive="active">Lista de Alumnos</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarAlumno']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Curso -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-book"></i> Curso
-      </a>
+        <i class="fas fa-book"></i> Cursos </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaCurso']" routerLinkActive="active">Listar Curso</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarCurso']" routerLinkActive="active">Registrar Curso</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaCurso']" routerLinkActive="active">Lista de Cursos</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarCurso']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Docente -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-chalkboard-teacher"></i> Docente
-      </a>
+        <i class="fas fa-chalkboard-teacher"></i> Docentes </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaDocente']" routerLinkActive="active">Listar Docente</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarDocente']" routerLinkActive="active">Registrar Docente</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaDocente']" routerLinkActive="active">Lista de Docentes</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarDocente']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Usuario -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-chalkboard-teacher"></i> Usuario
-      </a>
+        <i class="fas fa-chalkboard-teacher"></i> Usuarios </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaUsuario']" routerLinkActive="active">Listar Usuario</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarUsuario']" routerLinkActive="active">Registrar Usuario</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaUsuario']" routerLinkActive="active">Lista de Usuarios</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarUsuario']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Rol -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-chalkboard-teacher"></i> Rol
-      </a>
+        <i class="fas fa-chalkboard-teacher"></i> Administracion </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaRol']" routerLinkActive="active">Listar Rol</a>
-        <a class="dropdown-item" [routerLink]="['pagina/registrarRol']" routerLinkActive="active">Registrar Rol</a>
+        <a class="dropdown-item" [routerLink]="['pagina/listaRol']" routerLinkActive="active">Lista de Roles</a>
+        <a class="dropdown-item" [routerLink]="['pagina/registrarRol']" routerLinkActive="active">Registro de Roles</a>
       </div>
     </li>
 
 
         <!-- Dropdown para Factura -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
           <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-            <i class="fas fa-chalkboard-teacher"></i> Factura
-          </a>
+            <i class="fas fa-chalkboard-teacher"></i> Facturas </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" [routerLink]="['pagina/listarFactura']" routerLinkActive="active">Listar Factura</a>
             <a class="dropdown-item" [routerLink]="['pagina/registrarFactura']" routerLinkActive="active">Registrar Factura</a>
           </div>
         </li>
-
-
   </ul>
 </div>
 

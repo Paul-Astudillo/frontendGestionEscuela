@@ -1,10 +1,20 @@
+
 .header {
-  background-color: #007bff; /* Color de fondo azul */
-  color: white; /* Texto blanco */
-  padding: 10px; /* Espaciado interno */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 12vh;
+  background-color: #4A90E2; /* Color de fondo azul más suave */
+  color: #FFFFFF; /* Texto blanco */
+  padding: 15px; /* Espaciado interno mayor */
   text-align: center; /* Centrar el texto */
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-  margin-bottom: 10px; /* Margen inferior */
-  font-size: 2rem; /* Tamaño de fuente */
+  border-radius: 10px; /* Bordes más redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más suave y extendida */
+  margin-bottom: 20px; /* Margen inferior mayor */
+  font-size: 1.5rem; /* Tamaño de fuente mayor */
+  font-weight: 700; /* Fuente en negrita */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.header:hover {
+  background-color: #357ABD; /* Color de fondo al pasar el cursor */
+  transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
 }

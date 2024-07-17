@@ -1,18 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CursoService } from 'src/app/service/curso.service';
 import { DocenteService } from 'src/app/service/docente.service';
 import { Curso } from 'src/domain/curso';
 import { Docente } from 'src/domain/docente';
-
 
 @Component({
   selector: 'app-formulario-docente',
   templateUrl: './formulario-docente.component.html',
   styleUrls: ['./formulario-docente.component.scss']
 })
-export class FormularioDocenteComponent {
+export class FormularioDocenteComponent implements OnInit {
   docenteForm: FormGroup;
   docenteId: number | null = null;
 
@@ -29,7 +27,7 @@ export class FormularioDocenteComponent {
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', Validators.required],
       especialidad: ['', Validators.required],
-      cursoId: ['', Validators.required]
+      cursoId: ['']
     });
   }
 
@@ -37,7 +35,13 @@ export class FormularioDocenteComponent {
     this.docenteId = this.route.snapshot.paramMap.get('id') ? +this.route.snapshot.paramMap.get('id')! : null;
     if (this.docenteId) {
       this.docenteService.getById(this.docenteId).subscribe(
-        data => this.docenteForm.patchValue(data),
+        data => {
+          if (data.curso) {
+            this.docenteForm.patchValue({ ...data, cursoId: data.curso.id });
+          } else {
+            this.docenteForm.patchValue(data);
+          }
+        },
         error => console.error('Error al cargar el docente', error)
       );
     }
@@ -45,20 +49,29 @@ export class FormularioDocenteComponent {
 
   onSubmit(): void {
     if (this.docenteForm.valid) {
-      const docente: Docente = this.docenteForm.value;
+      const formValues = this.docenteForm.value;
+      const docenteData = new Docente({
+        cedula: formValues.cedula,
+        nombre: formValues.nombre,
+        apellido: formValues.apellido,
+        email: formValues.email,
+        telefono: formValues.telefono,
+        especialidad: formValues.especialidad,
+        curso: formValues.cursoId ? new Curso({ id: formValues.cursoId }) : undefined
+      });
+
       if (this.docenteId) {
-        docente.id = this.docenteId;
-        this.docenteService.update(docente).subscribe(
+        docenteData.id = this.docenteId;
+        this.docenteService.update(docenteData).subscribe(
           () => this.router.navigate(['/pagina/listaDocente']),
           error => console.error('Error al actualizar el docente', error)
         );
       } else {
-        this.docenteService.save(docente).subscribe(
+        this.docenteService.save(docenteData).subscribe(
           () => this.router.navigate(['/pagina/listaDocente']),
           error => console.error('Error al guardar el docente', error)
         );
       }
     }
   }
-
 }

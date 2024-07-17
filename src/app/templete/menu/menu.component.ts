@@ -14,4 +14,21 @@ export class MenuComponent {
     parent.classList.toggle('open');
   }
 
+  closeDropdown(event: Event): void {
+    const target = event.currentTarget as HTMLElement;
+    const parent = target.closest('.dropdown');
+
+    if (parent?.classList.contains('open')) {
+      parent.classList.remove('open');
+    }
+  }
+
+  openSubmenu(event: Event, submenuId: string): void {
+    const submenu = document.getElementById(submenuId);
+    if (submenu) {
+      submenu.style.display = 'block';
+    }
+  }
+  
+
 }

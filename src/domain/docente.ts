@@ -22,3 +22,5 @@ export class Docente {
     this.curso = init?.curso;
   }
 }
+
+
