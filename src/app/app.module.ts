@@ -27,6 +27,7 @@ import { FormularioMatriculaComponent } from './pages/formulario-matricula/formu
 import { ListarFacturaComponent } from './pages/listar-factura/listar-factura.component';
 import { FormularioFacturaComponent } from './pages/formulario-factura/formulario-factura.component';
 import { FooterComponent } from './templete/footer/footer.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { FooterComponent } from './templete/footer/footer.component';
     FormularioMatriculaComponent,
     ListarFacturaComponent,
     FormularioFacturaComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

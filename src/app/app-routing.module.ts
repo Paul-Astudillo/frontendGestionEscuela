@@ -19,6 +19,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { FormularioMatriculaComponent } from './pages/formulario-matricula/formulario-matricula.component';
 import { ListarFacturaComponent } from './pages/listar-factura/listar-factura.component';
 import { FormularioFacturaComponent } from './pages/formulario-factura/formulario-factura.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: 'pagina/listaRepresentante', component: ListarRepresentantesComponent },
@@ -44,10 +45,15 @@ const routes: Routes = [
   { path: 'pagina/registrarMatricula', component: FormularioMatriculaComponent },
   { path: 'pagina/listarFactura', component: ListarFacturaComponent },
   { path: 'pagina/registrarFactura', component: FormularioFacturaComponent },
+  { path: 'pagina/login', component: LoginComponent },
 
-  //{ path: '', redirectTo: '/usuarios', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent },  // Ruta para la página de inicio
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' }  // Redirección a la página de inicio
+
+  // { path: '', redirectTo: 'pagina/login', pathMatch: 'full' },
+  // { path: 'inicio', component: InicioComponent },  // Ruta para la página de inicio
+  // { path: '', redirectTo: '/inicio', pathMatch: 'full' }  // Redirección a la página de inicio
+
+  { path: '', redirectTo: '/pagina/login', pathMatch: 'full' },  // Redirección a la página de login
+  { path: '**', redirectTo: '/pagina/login', pathMatch: 'full' }  // Redirección a la página de login si la ruta no coincide
 
 
 
