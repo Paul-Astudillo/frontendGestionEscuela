@@ -234,7 +234,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="detalle">Detalles </label>
+            <label for="detalle">Descripcion </label>
             <input type="text" id="detalle" class="form-control" formControlName="detalle" />
             <div *ngIf="facturaForm.get('detalleFactura')?.get('detalle')?.invalid && (facturaForm.get('detalleFactura')?.get('detalle')?.dirty || facturaForm.get('detalleFactura')?.get('detalle')?.touched)" class="text-danger">
               El detalle es requerido.
