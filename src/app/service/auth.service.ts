@@ -62,7 +62,7 @@
 
 
 
-import { Injectable } from '@angular/core';
+import { Injectable, numberAttribute } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -86,6 +86,9 @@ export class AuthService {
   getCurrentUserName(): string | null {
     return localStorage.getItem('user');
   }
+  getCurrentUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
 
   authenticate(username: string, password: string): Observable<boolean> {
     console.log('Autenticando usuario:', username);
@@ -96,15 +99,17 @@ export class AuthService {
           const token = 'genericAuthToken';
           localStorage.setItem('authToken', token);
           if (usuario.rol) {
-            localStorage.setItem('userRole', usuario.rol.descripcion); // Guardar el rol del usuario
+            localStorage.setItem('userRole', usuario.rol.descripcion);
             localStorage.setItem('user', usuario.usuario);
+            localStorage.setItem('userId',usuario.id.toString());
           } else {
-            localStorage.removeItem('userRole'); // Remover el rol si no está definido
+            localStorage.removeItem('userRole');
           }
           console.log('Autenticación exitosa');
           return true;
         } else {
           console.log('Usuario no encontrado o credenciales incorrectas');
+          alert('Usuario no encontrado o credenciales incorrectas');
           return false;
         }
       }),

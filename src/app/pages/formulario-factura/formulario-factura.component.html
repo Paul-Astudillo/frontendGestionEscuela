@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1 class="text-center">{{ facturaId ? 'Editar Factura' : 'Nueva Factura' }}</h1>
   <form [formGroup]="facturaForm" (ngSubmit)="onSubmit()">
     <div class="form-section">
@@ -119,6 +119,142 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="matriculaId">Representate</label>
+            <select id="matriculaId" class="form-control" formControlName="matriculaId">
+              <option *ngFor="let matricula of matriculas" [value]="matricula.id">{{ matricula.nombre }}</option>
+            </select>
+            <div *ngIf="facturaForm.get('detalleFactura')?.get('matriculaId')?.invalid && (facturaForm.get('detalleFactura')?.get('matriculaId')?.dirty || facturaForm.get('detalleFactura')?.get('matriculaId')?.touched)" class="text-danger">
+              El ID de matrícula es requerido.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="facturaForm.invalid">Guardar</button>
+  </form>
+</div> -->
+
+
+<div class="container">
+  <h1 class="text-center">{{ facturaId ? 'Editar Factura' : 'Nueva Factura' }}</h1>
+  <form [formGroup]="facturaForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+      <h3>Datos de la Factura</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="codigoFactura">Código Factura</label>
+            <input type="text" id="codigoFactura" class="form-control" formControlName="codigoFactura" readonly />
+            <div *ngIf="facturaForm.get('codigoFactura')?.invalid && (facturaForm.get('codigoFactura')?.dirty || facturaForm.get('codigoFactura')?.touched)" class="text-danger">
+              El código de factura es requerido.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="cedula">Cédula</label>
+            <input type="text" id="cedula" class="form-control" formControlName="cedula" />
+            <div *ngIf="facturaForm.get('cedula')?.invalid && (facturaForm.get('cedula')?.dirty || facturaForm.get('cedula')?.touched)" class="text-danger">
+              La cédula es requerida.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" class="form-control" formControlName="direccion" />
+            <div *ngIf="facturaForm.get('direccion')?.invalid && (facturaForm.get('direccion')?.dirty || facturaForm.get('direccion')?.touched)" class="text-danger">
+              La dirección es requerida.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" class="form-control" formControlName="telefono" />
+            <div *ngIf="facturaForm.get('telefono')?.invalid && (facturaForm.get('telefono')?.dirty || facturaForm.get('telefono')?.touched)" class="text-danger">
+              El teléfono es requerido.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="fechaEmision">Fecha de Emisión</label>
+            <input type="date" id="fechaEmision" class="form-control" formControlName="fechaEmision" readonly />
+            <div *ngIf="facturaForm.get('fechaEmision')?.invalid && (facturaForm.get('fechaEmision')?.dirty || facturaForm.get('fechaEmision')?.touched)" class="text-danger">
+              La fecha de emisión es requerida.
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-6">
+          <div class="form-group">
+            <label for="usuarioId">Usuario ID</label>
+            <input type="text" id="usuarioId" class="form-control" formControlName="usuarioId" />
+            <div *ngIf="facturaForm.get('usuarioId')?.invalid && (facturaForm.get('usuarioId')?.dirty || facturaForm.get('usuarioId')?.touched)" class="text-danger">
+              El usuario ID es requerido.
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="form-section" formGroupName="detalleFactura">
+      <h3>Detalle Factura</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input type="text" id="cantidad" class="form-control" formControlName="cantidad" />
+            <div *ngIf="facturaForm.get('detalleFactura')?.get('cantidad')?.invalid && (facturaForm.get('detalleFactura')?.get('cantidad')?.dirty || facturaForm.get('detalleFactura')?.get('cantidad')?.touched)" class="text-danger">
+              La cantidad es requerida.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="subtotal">Subtotal</label>
+            <input type="text" id="subtotal" class="form-control" formControlName="subtotal" />
+            <div *ngIf="facturaForm.get('detalleFactura')?.get('subtotal')?.invalid && (facturaForm.get('detalleFactura')?.get('subtotal')?.dirty || facturaForm.get('detalleFactura')?.get('subtotal')?.touched)" class="text-danger">
+              El subtotal es requerido.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="total">Total</label>
+            <input type="text" id="total" class="form-control" formControlName="total" readonly />
+            <div *ngIf="facturaForm.get('detalleFactura')?.get('total')?.invalid && (facturaForm.get('detalleFactura')?.get('total')?.dirty || facturaForm.get('detalleFactura')?.get('total')?.touched)" class="text-danger">
+              El total es requerido.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="detalle">Detalles </label>
+            <input type="text" id="detalle" class="form-control" formControlName="detalle" />
+            <div *ngIf="facturaForm.get('detalleFactura')?.get('detalle')?.invalid && (facturaForm.get('detalleFactura')?.get('detalle')?.dirty || facturaForm.get('detalleFactura')?.get('detalle')?.touched)" class="text-danger">
+              El detalle es requerido.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="iva">IVA</label>
+            <input type="text" id="iva" class="form-control" formControlName="iva" readonly />
+            <div *ngIf="facturaForm.get('detalleFactura')?.get('iva')?.invalid && (facturaForm.get('detalleFactura')?.get('iva')?.dirty || facturaForm.get('detalleFactura')?.get('iva')?.touched)" class="text-danger">
+              El IVA es requerido.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="matriculaId">Representante</label>
             <select id="matriculaId" class="form-control" formControlName="matriculaId">
               <option *ngFor="let matricula of matriculas" [value]="matricula.id">{{ matricula.nombre }}</option>
             </select>
