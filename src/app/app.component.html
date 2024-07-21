@@ -1,4 +1,4 @@
-<!-- <div class="cuerpo"> -->
+<!-- 
     <div class="titulo">
         <app-titulo></app-titulo>
     </div>
@@ -11,4 +11,61 @@
     <div class="footer">
         <app-footer></app-footer>
     </div>
-<!-- </div> -->
+ -->
+ <!-- <div *ngIf="isAuthenticated; else loginTemplate">
+    <div class="titulo">
+      <app-titulo></app-titulo>
+    </div>
+    <div class="menu">
+      <app-menu></app-menu>
+    </div>
+    <div class="cuerpo">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <ng-template #loginTemplate>
+    <app-login></app-login>
+  </ng-template>
+   -->
+
+   <!-- <div *ngIf="isAuthenticated; else loginTemplate">
+    <div class="titulo">
+        <button (click)="logout()" class="floating-button">Cerrar Sesión</button>
+      <app-titulo></app-titulo>
+    </div>
+    <div class="menu">
+      <app-menu></app-menu>
+    </div>
+    <div class="cuerpo">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <ng-template #loginTemplate>
+    <app-login (loginSuccess)="login()"></app-login> 
+  </ng-template> -->
+  
+  <div *ngIf="isAuthenticated; else loginTemplate">
+    <div class="titulo">
+      <button (click)="logout()" class="floating-button">Cerrar Sesión</button>
+      <app-titulo></app-titulo>
+    </div>
+    <div class="menu">
+      <app-menu></app-menu>
+    </div>
+    <div class="cuerpo">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <ng-template #loginTemplate>
+    <app-login (loginSuccess)="login($event.username, $event.password)"></app-login>
+  </ng-template>
+  

@@ -1,6 +1,7 @@
 .titulo {
     justify-content: center;
     float: center;
+    position: relative;
   }
 .cuerpo{
   background-color: rgb(230, 230, 230);
@@ -9,4 +10,29 @@
 .footer{
   display: flex;
   padding: 30px;
+}
+
+.floating-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Color verde amigable */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.floating-button:hover {
+  background-color: #45a049; /* Color más oscuro en hover */
+  transform: translateY(-2px); /* Elevación en hover */
+}
+
+.floating-button:active {
+  background-color: #39843c; /* Color más oscuro en active */
+  transform: translateY(0); /* Volver a la posición original en active */
 }
