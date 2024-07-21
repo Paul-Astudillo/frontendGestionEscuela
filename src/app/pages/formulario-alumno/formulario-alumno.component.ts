@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnoService } from 'src/app/service/alumno.service';
@@ -11,7 +11,7 @@ import { Representante } from 'src/domain/representante';
   templateUrl: './formulario-alumno.component.html',
   styleUrls: ['./formulario-alumno.component.scss']
 })
-export class FormularioAlumnoComponent {
+export class FormularioAlumnoComponent implements OnInit {
   alumnoForm: FormGroup;
   alumnoId: number | null = null;
   representantes: Representante[] = [];
@@ -41,7 +41,6 @@ export class FormularioAlumnoComponent {
       this.alumnoId = +params.get('id')!;
       if (this.alumnoId) {
         this.alumnoService.getById(this.alumnoId).subscribe((alumno: Alumno) => {
-          // Convertir fecha
           alumno.fechaN = new Date(alumno.fechaN);
           this.alumnoForm.patchValue(alumno);
         });
@@ -58,16 +57,28 @@ export class FormularioAlumnoComponent {
       return;
     }
 
-    const alumno: Alumno = new Alumno(this.alumnoForm.value);
+    // Convertir representanteId a número
+    const formValues = this.alumnoForm.value;
+    formValues.representanteId = Number(formValues.representanteId);
+    console.log('Representante ID (convertido):', formValues.representanteId);
+
+    const alumno: Alumno = new Alumno(formValues);
+    console.log('Datos del alumno antes de enviar:', alumno); // Verifica los datos que se envían, especialmente representanteId
 
     if (this.alumnoId) {
       alumno.id = this.alumnoId;
-      this.alumnoService.update(alumno).subscribe(() => {
+      this.alumnoService.update(alumno).subscribe(response => {
+        console.log('Respuesta del servidor al actualizar:', response);
         this.router.navigate(['/pagina/listaAlumno']);
+      }, error => {
+        console.error('Error al actualizar el alumno:', error);
       });
     } else {
-      this.alumnoService.save(alumno).subscribe(() => {
+      this.alumnoService.save(alumno).subscribe(response => {
+        console.log('Respuesta del servidor al guardar:', response);
         this.router.navigate(['/pagina/listaAlumno']);
+      }, error => {
+        console.error('Error al guardar el alumno:', error);
       });
     }
   }

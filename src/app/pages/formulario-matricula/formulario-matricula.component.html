@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="matricula">Matrícula</label>
+        <label for="matricula">Valor de Matrícula</label>
         <input type="text" id="matricula" class="form-control" formControlName="matricula" />
         <div *ngIf="matriculaForm.get('matricula')?.invalid && (matriculaForm.get('matricula')?.dirty || matriculaForm.get('matricula')?.touched)" class="text-danger">
           La matrícula es requerida.

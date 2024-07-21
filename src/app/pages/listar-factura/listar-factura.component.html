@@ -4,7 +4,7 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th>ID</th>
+          <!-- <th>ID</th> -->
           <th>Código Factura</th>
           <th>Cédula</th>
           <th>Dirección</th>
@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let factura of facturas" (click)="seleccionarFactura(factura.id)">
-          <td>{{ factura.id }}</td>
+          <!-- <td>{{ factura.id }}</td> -->
           <td>{{ factura.codigoFactura }}</td>
           <td>{{ factura.cedula }}</td>
           <td>{{ factura.direccion }}</td>

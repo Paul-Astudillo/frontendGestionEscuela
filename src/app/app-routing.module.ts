@@ -49,8 +49,8 @@ const routes: Routes = [
 
 
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent },  // Ruta para la página de inicio
-  // { path: '**', redirectTo: '/inicio', pathMatch: 'full' }  // Redirección a la página de inicio
+  { path: 'inicio', component: InicioComponent }, 
+  { path: '**', redirectTo: '/inicio', pathMatch: 'full' } 
 
   // { path: '', redirectTo: '/pagina/login', pathMatch: 'full' },  // Redirección a la página de login
   // { path: '**', redirectTo: '/pagina/login', pathMatch: 'full' }  // Redirección a la página de login si la ruta no coincide

@@ -5,7 +5,8 @@
     <table class="table table-striped table-bordered">
       <thead class="thead-dark">
         <tr>
-          <th>Nro</th>
+          <!-- <th>Nro</th> -->
+          <th>Cedula</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Dirección</th>
@@ -16,7 +17,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let representante of representantes">
-          <td>{{ representante.id }}</td>
+          <!-- <td>{{ representante.id }}</td> -->
+          <td>{{ representante.cedula }}</td>
           <td>{{ representante.nombre }}</td>
           <td>{{ representante.apellido }}</td>
           <td>{{ representante.direccion }}</td>

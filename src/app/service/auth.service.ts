@@ -48,9 +48,8 @@
 //   }
 // }
 
-
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Usuario } from 'src/domain/usuario';
@@ -68,15 +67,24 @@ export class AuthService {
     return !!localStorage.getItem('authToken');
   }
 
-  // Método para autenticar al usuario
+  // // Método para obtener todos los usuarios (para depuración)
+  // getAllUsuarios(): Observable<Usuario[]> {
+  //   return this.http.get<Usuario[]>(`${this.apiUrl}/List`).pipe(
+  //     catchError(error => {
+  //       console.error('Error al obtener usuarios:', error);
+  //       return of([]);
+  //     })
+  //   );
+  // }
+
   authenticate(username: string, password: string): Observable<boolean> {
     console.log('Autenticando usuario:', username);
     return this.http.get<Usuario[]>(`${this.apiUrl}/List`).pipe(
       map(usuarios => {
-        console.log('Usuarios obtenidos:', usuarios);
-        const usuario = usuarios.find(user => user.usuario === username && user.password === password);
+        // console.log('Usuarios obtenidos:', usuarios);
+        const usuario = usuarios.find(user => user.usuario.trim() === username.trim() && user.password.trim() === password.trim());
         if (usuario) {
-          const token = 'genericAuthToken'; // Generar o recibir un token real
+          const token = 'genericAuthToken';
           localStorage.setItem('authToken', token);
           console.log('Autenticación exitosa');
           return true;
@@ -85,30 +93,25 @@ export class AuthService {
           return false;
         }
       }),
-      // Manejando el error y devolviendo 'false' en caso de error
       catchError(error => {
         console.error('Error durante la autenticación:', error);
         return of(false);
       })
     );
   }
-
-  // Método para iniciar sesión
   login(username: string, password: string): Observable<boolean> {
     return this.authenticate(username, password).pipe(
       map(isAuthenticated => {
         if (isAuthenticated) {
-          localStorage.setItem('currentUser', username); // Guardar el usuario actual
+          localStorage.setItem('currentUser', username);
         }
         return isAuthenticated;
       })
     );
   }
 
-  // Método para cerrar sesión (eliminar el token)
   logout(): void {
     localStorage.removeItem('authToken');
     localStorage.removeItem('currentUser');
   }
 }
-

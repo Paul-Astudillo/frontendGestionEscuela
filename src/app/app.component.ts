@@ -54,15 +54,9 @@ export class AppComponent implements OnInit {
     this.isAuthenticated = this.authService.isAuthenticated();
   }
 
-  login(username: string, password: string) {
-    this.authService.login(username, password).subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated;
-      if (isAuthenticated) {
-        this.router.navigate(['/']); // Navegar a la página principal o a la deseada después del login
-      } else {
-        console.error('Login failed');
-      }
-    });
+  onLoginSuccess() {
+    this.isAuthenticated = true;
+    this.router.navigate(['/']); // Navegar a la página principal o a la deseada después del login
   }
 
   logout() {
@@ -71,4 +65,3 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/pagina/login']); // Navegar a la página de login después de cerrar sesión
   }
 }
-

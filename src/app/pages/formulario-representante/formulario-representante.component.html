@@ -2,6 +2,15 @@
   <div class="container form-container">
     <h1 class="mb-4 text-center">{{ representanteId ? 'Editar Representante' : 'Nuevo Representante' }}</h1>
     <form [formGroup]="representanteForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="apellido">Cedula</label>
+        <input type="text" id="cedula" class="form-control" formControlName="cedula" />
+        <div *ngIf="representanteForm.get('cedula')?.invalid && (representanteForm.get('cedula')?.dirty || representanteForm.get('cedula')?.touched)" class="text-danger">
+          El apellido es requerido.
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="nombre">Nombre    </label>
         <input type="text" id="nombre" class="form-control" formControlName="nombre" />

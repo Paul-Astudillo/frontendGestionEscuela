@@ -65,11 +65,11 @@ export class AlumnoService {
   save(alumno: Alumno): Observable<Alumno> {
     return this.http.post<Alumno>(`${this.apiUrl}/guardar`, alumno);
   }
-
+  
   update(alumno: Alumno): Observable<Alumno> {
     return this.http.put<Alumno>(`${this.apiUrl}/actualizar`, alumno);
   }
-
+    
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/eliminar/${id}`);
   }

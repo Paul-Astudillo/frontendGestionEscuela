@@ -1,70 +1,89 @@
-/* General Styles */
-// body {
-//     font-family: 'Roboto', sans-serif;
-//     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-//     display: flex;
-//     
-//     align-items: center;
-//     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-//   }
-  
-  .login-container {
-    background-color: #ffffff;
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #e7e7e7ed;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
+    width: 95%;
+    height: 88vh;
+    // max-width: 400px;
     text-align: center;
 }
-  
-//   .login-container:hover {
-//     transform: translateY(-5px);
-//     box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-//   }
-  
-  .login-form {
-    max-width: 350px;
+
+/* Animación del contenedor */
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Formulario de login */
+.login-form {
+    max-width: 100%;
     margin: auto;
-  }
-  
-  .login-form h2 {
+}
+
+/* Título del formulario */
+.login-form h2 {
     margin-bottom: 20px;
     font-size: 28px;
     color: #333;
     text-align: center;
-  }
-  
-  .input-group {
+    font-weight: bold;
+}
+
+/* Grupo de entrada */
+.input-group {
     margin-bottom: 20px;
-  }
-  
-  .input-group label {
+    text-align: left;
+}
+
+/* Etiqueta */
+.input-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #555;
-  }
-  
-  .input-group input {
+}
+
+/* Entrada */
+.input-group input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
     font-size: 16px;
-  }
-  
-  .input-group input:focus {
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Entrada en foco */
+.input-group input:focus {
     border-color: #007bff;
     background-color: #fff;
     outline: none;
-  }
-  
-  .login-button {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Botón de inicio de sesión */
+.login-button {
     width: 100%;
     padding: 14px;
     background-color: #007bff;
@@ -72,10 +91,24 @@
     border-radius: 8px;
     color: #ffffff;
     font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .login-button:hover {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Botón de inicio de sesión en hover */
+.login-button:hover {
     background-color: #0056b3;
-  }
+    transform: translateY(-2px);
+}
+
+/* Botón de inicio de sesión en active */
+.login-button:active {
+    background-color: #004080;
+    transform: translateY(0);
+}
+
+/* Añadir una transición suave */
+* {
+    transition: all 0.3s ease-in-out;
+}

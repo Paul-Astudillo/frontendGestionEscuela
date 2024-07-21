@@ -1,20 +1,18 @@
-<div class="login-container">
-    <div class="login-form">
-      <h2>Bienvenido</h2>
-      <form (ngSubmit)="onLogin()">
-        <div class="input-group">
-          <label for="username">Username</label>
-          <!-- <input type="text" id="username" name="username" required /> -->
-          <input type="text" [(ngModel)]="username" placeholder="Usuario">
+<div class="centtro">
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Bienvenido</h2>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" [(ngModel)]="username" placeholder="Usuario">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" [(ngModel)]="password" placeholder="Contraseña">
+            </div>
+            <button type="submit" class="login-button" (click)="onLogin()">Login</button>
         </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <!-- <input type="password" id="password" name="password" required /> -->
-          <input type="password" [(ngModel)]="password" placeholder="Contraseña">
-        </div>
-        <!-- <button type="submit" class="login-button" (click)="onLogin()">Login</button> -->
-        <button (click)="onLogin()">Iniciar Sesión</button>
-      </form>
     </div>
-  </div>
+</div>
+  
   

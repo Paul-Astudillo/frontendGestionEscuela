@@ -20,6 +20,7 @@ export class FormularioRepresentanteComponent {
     private router: Router
   ) {
     this.representanteForm = this.fb.group({
+      cedula: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       direccion: ['', Validators.required],

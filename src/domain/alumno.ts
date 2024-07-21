@@ -25,5 +25,6 @@ export class Alumno {
     this.direccion = init?.direccion ?? '';
     this.representante = init?.representante;
     this.representanteId = init?.representanteId;
+    Object.assign(this, init);
   }
 }
