@@ -46,7 +46,7 @@ export class LoginComponent {
           console.log('Login exitoso');
           this.loginSuccess.emit(); // Emitir void como se espera
         } else {
-          alert("Usuario no encontrado o credenciales incorrectas");
+          // alert("Usuario no encontrado o credenciales incorrectas");
         }
       },
       error => {

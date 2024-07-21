@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
   title = 'frontendGestionEscuela';
+  
+  @Input() userRole: string | null = null;
 
   toggleDropdown(event: Event) {
     const target = event.target as HTMLElement;
@@ -29,6 +31,4 @@ export class MenuComponent {
       submenu.style.display = 'block';
     }
   }
-  
-
 }

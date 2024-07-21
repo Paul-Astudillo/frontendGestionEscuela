@@ -25,7 +25,7 @@ export class FormularioUsuarioComponent {
       id: [0],
       usuario: ['', Validators.required],
       password: ['', Validators.required],
-      estado: ['', Validators.required],
+      estado: ['Activo', Validators.required],
       rolId: [null, Validators.required]
     });
   }

@@ -69,12 +69,12 @@ export class FormularioFacturaComponent {
       if (this.facturaId) {
         factura.id = this.facturaId;
         this.cabeceraFacturaService.update(factura).subscribe(
-          () => this.router.navigate(['/listar-facturas']),
+          () => this.router.navigate(['pagina/listarFactura']),
           error => console.error('Error al actualizar la factura', error)
         );
       } else {
         this.cabeceraFacturaService.save(factura).subscribe(
-          () => this.router.navigate(['/listar-facturas']),
+          () => this.router.navigate(['pagina/listarFactura']),
           error => console.error('Error al guardar la factura', error)
         );
       }

@@ -1,11 +1,9 @@
-<!-- src/app/listar-usuarios/listar-usuarios.component.html -->
-<div class="container mt-5">
+  <!-- <div class="container mt-5">
     <h1 class="mb-4">Lista de Usuarios</h1>
     <div class="table-responsive">
       <table class="table table-striped table-bordered">
         <thead class="thead-dark">
           <tr>
-            <!-- <th>ID</th> -->
             <th>Usuario</th>
             <th>Password</th>
             <th>Estado</th>
@@ -14,11 +12,51 @@
         </thead>
         <tbody>
           <tr *ngFor="let usuario of usuarios">
-            <!-- <td>{{ usuario.id }}</td> -->
             <td>{{ usuario.usuario }}</td>
-            <td>{{ usuario.password }}</td>
-            <td>{{ usuario.estado }}</td>
-            <td>{{ usuario.rol?.descripcion }}</td>
+            <td>{{ ocultarPassword(usuario.password) }}</td>
+            <td>
+              <select [(ngModel)]="usuario.estado">
+                <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+              </select>
+            </td>
+            <td>
+              <select *ngIf="usuario.rol" [(ngModel)]="usuario.rol.id">
+                <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.descripcion }}</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+   -->
+
+   <div class="container mt-5">
+    <h1 class="mb-4">Lista de Usuarios</h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Usuario</th>
+            <th>Password</th>
+            <th>Estado</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.usuario }}</td>
+            <td>{{ ocultarPassword(usuario.password) }}</td>
+            <td>
+              <select [(ngModel)]="usuario.estado" (ngModelChange)="actualizarUsuario(usuario)">
+                <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+              </select>
+            </td>
+            <td>
+              <select *ngIf="usuario.rol" [(ngModel)]="usuario.rol.id" (ngModelChange)="actualizarUsuario(usuario)">
+                <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.descripcion }}</option>
+              </select>
+            </td>
           </tr>
         </tbody>
       </table>

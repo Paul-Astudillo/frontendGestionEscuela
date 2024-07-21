@@ -12,6 +12,6 @@ export class DetalleFacturaService {
   constructor(private http: HttpClient) { }
 
   getByFacturaId(facturaId: number): Observable<DetalleFactura[]> {
-    return this.http.get<DetalleFactura[]>(`${this.apiUrl}/List/${facturaId}`);
+    return this.http.get<DetalleFactura[]>(`${this.apiUrl}/buscar/${facturaId}`);
   }
 }

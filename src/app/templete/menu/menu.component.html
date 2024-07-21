@@ -1,25 +1,26 @@
 <div class="menu-container">
   <ul class="nav">
-    <!-- Dropdown para Representante -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Docente' ||userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-user"></i> Representantes </a>
+        <i class="fas fa-user"></i> Representantes 
+      </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" [routerLink]="['pagina/listaRepresentante']" routerLinkActive="active" (click)="closeDropdown($event)">Lista de Representantes</a>
         <a class="dropdown-item" [routerLink]="['pagina/registrarRepresentante']" routerLinkActive="active" (click)="closeDropdown($event)">Registro</a>
       </div>
     </li>
-    <!-- Dropdown para Año Lectivo -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <!-- Similar conditional rendering for other menu items -->
+    <li *ngIf="userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
-        <i class="fas fa-calendar"></i> Año Lectivo </a>
+        <i class="fas fa-calendar"></i> Año Lectivo 
+      </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" [routerLink]="['pagina/listaAnioLectivo']" routerLinkActive="active">Lista de Años Lectivos</a>
         <a class="dropdown-item" [routerLink]="['pagina/registrarAniolectivo']" routerLinkActive="active">Registro</a>
       </div>
     </li>
     <!-- Dropdown para Matrícula -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Finanza' || userRole === 'Docente' || userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-file-alt"></i> Matrículas </a>
       <div class="dropdown-menu">
@@ -28,7 +29,7 @@
       </div>
     </li>
     <!-- Dropdown para Alumno -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Docente' || userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-user-graduate"></i> Alumnos </a>
       <div class="dropdown-menu">
@@ -37,7 +38,7 @@
       </div>
     </li>
     <!-- Dropdown para Curso -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Finanza' || userRole === 'Docente' || userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-book"></i> Cursos </a>
       <div class="dropdown-menu">
@@ -46,7 +47,7 @@
       </div>
     </li>
     <!-- Dropdown para Docente -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Docente' || userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-chalkboard-teacher"></i> Docentes </a>
       <div class="dropdown-menu">
@@ -55,7 +56,7 @@
       </div>
     </li>
     <!-- Dropdown para Usuario -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-chalkboard-teacher"></i> Usuarios </a>
       <div class="dropdown-menu">
@@ -64,18 +65,16 @@
       </div>
     </li>
     <!-- Dropdown para Rol -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-chalkboard-teacher"></i> Administracion </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="['pagina/listaRol']" routerLinkActive="active">Lista de Roles</a>
+        <!-- <a class="dropdown-item" [routerLink]="['pagina/listaRol']" routerLinkActive="active">Lista de Roles</a> -->
         <a class="dropdown-item" [routerLink]="['pagina/registrarRol']" routerLinkActive="active">Registro de Roles</a>
       </div>
     </li>
-
-
         <!-- Dropdown para Factura -->
-    <li class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
+    <li *ngIf="userRole === 'Finanza' || userRole === 'Administrador'" class="nav-item dropdown" (mouseleave)="closeDropdown($event)">
       <a class="nav-link" (click)="toggleDropdown($event)" href="javascript:void(0)">
         <i class="fas fa-chalkboard-teacher"></i> Facturas </a>
       <div class="dropdown-menu">
@@ -88,4 +87,4 @@
   </ul>
 </div>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
