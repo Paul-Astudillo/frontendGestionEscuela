@@ -4,7 +4,6 @@
     <table class="table table-striped table-bordered">
       <thead class="thead-dark">
         <tr>
-          <!-- <th>ID</th> -->
           <th>Descripción</th>
           <th>Docente</th>
           <th>Año Lectivo</th>
@@ -13,10 +12,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let curso of cursos">
-          <!-- <td>{{ curso.id }}</td> -->
           <td>{{ curso.descripcion }}</td>
           <td>{{ curso.docente?.nombre }} {{ curso.docente?.apellido }}</td>
-          <!-- <td>{{ curso.anioLectivoId }} - {{ curso.anioLectivo?.descripcion }}</td> -->
           <td>{{ curso.anioLectivo?.descripcion }}</td>
           <td>
             <button class="btn btn-primary btn-sm" [routerLink]="['/pagina/registrarCurso', curso.id]">Editar</button>
