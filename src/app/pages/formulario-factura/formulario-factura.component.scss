@@ -123,3 +123,15 @@ button:disabled {
   border-radius: 10px;
   background-color: #f9f9f9;
 }
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-append button {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

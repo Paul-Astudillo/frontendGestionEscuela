@@ -9,6 +9,8 @@ import { Matricula } from 'src/domain/matricula';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Representante } from 'src/domain/representante';
 import { RepresentanteService } from 'src/app/service/representante.service';
+import { AlumnoService } from 'src/app/service/alumno.service';
+import { Alumno } from 'src/domain/alumno';
 
 
 @Component({
@@ -31,7 +33,8 @@ export class FormularioFacturaComponent implements OnInit {
     private matriculaService: MatriculaService, // Inyecta el servicio de matrículas
     private router: Router,
     private route: ActivatedRoute,
-    private representanteService: RepresentanteService
+    private representanteService: RepresentanteService,
+    private alumnoService: AlumnoService
   ) {
     this.facturaForm = this.fb.group({
       codigoFactura: ['', Validators.required],
@@ -135,6 +138,21 @@ export class FormularioFacturaComponent implements OnInit {
         } else {
           console.error('Representante no encontrado');
           // Manejar el caso en que no se encuentre el representante
+          this.alumnoService.getByCedula(cedula).subscribe(
+            (alumno: Alumno) => {
+              if (alumno && alumno.representante) {
+                this.actualizarRepresentante(alumno.representante);
+              } else {
+                console.error('Estudiante o representante no encontrado');
+                // Manejar el caso en que no se encuentre el representante
+                
+              }
+            },
+            (error) => {
+              console.error('Error al buscar Alumno', error);
+              // Manejar el error, mostrar un mensaje, etc.
+            }
+          );
         }
       },
       (error) => {
@@ -142,6 +160,23 @@ export class FormularioFacturaComponent implements OnInit {
         // Manejar el error, mostrar un mensaje, etc.
       }
     );
+  }
+
+  actualizarRepresentante(representante: Representante): void {
+    console.log('Representante encontrado:', representante);  // Muestra el representante en la consola
+
+    // Concatenar nombre y apellido del representante
+    const nombreCompleto = `${representante.nombre} ${representante.apellido}`;
+
+    // Agregar el representante a la lista de matriculas
+    this.matriculas = [{ id: representante.id, nombre: nombreCompleto }];
+
+    // Establecer el id del representante como valor seleccionado en el select
+    this.facturaForm.patchValue({
+      detalleFactura: {
+        matriculaId: representante.id
+      }
+    });
   }
   
 }

@@ -77,4 +77,8 @@ export class AlumnoService {
   private convertToDate(dateString: string): Date {
     return dateString ? new Date(dateString) : new Date();
   }
+
+  getByCedula(cedula: string): Observable<Alumno> {
+    return this.http.get<Alumno>(`${this.apiUrl}/buscarCedula/${cedula}`);
+  }
 }
