@@ -6,6 +6,10 @@ import { CabeceraFacturaService } from 'src/app/service/cabecera-factura.service
 import { MatriculaService } from 'src/app/service/matricula.service';
 import { CabeceraFactura } from 'src/domain/cabecera-factura';
 import { Matricula } from 'src/domain/matricula';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Representante } from 'src/domain/representante';
+import { RepresentanteService } from 'src/app/service/representante.service';
+
 
 @Component({
   selector: 'app-formulario-factura',
@@ -13,9 +17,12 @@ import { Matricula } from 'src/domain/matricula';
   styleUrls: ['./formulario-factura.component.scss']
 })
 export class FormularioFacturaComponent implements OnInit {
+  
   facturaForm: FormGroup;
+
+  faSearch = faSearch;
   facturaId: number | null = null;
-  matriculas: Matricula[] = []; // Añade una propiedad para las matrículas
+  matriculas: { id: number, nombre: string }[] = [];  // Lista de representantes para el select
   user: string | null = null;
   constructor(
     private authService: AuthService,
@@ -23,7 +30,8 @@ export class FormularioFacturaComponent implements OnInit {
     private cabeceraFacturaService: CabeceraFacturaService,
     private matriculaService: MatriculaService, // Inyecta el servicio de matrículas
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private representanteService: RepresentanteService
   ) {
     this.facturaForm = this.fb.group({
       codigoFactura: ['', Validators.required],
@@ -104,4 +112,36 @@ export class FormularioFacturaComponent implements OnInit {
       }
     }
   }
+
+  buscarUsuarioPorCedula(): void {
+    const cedula = this.facturaForm.get('cedula')?.value;
+    this.representanteService.getByCedula(cedula).subscribe(
+      (representante: Representante) => {
+        if (representante) {
+          console.log('Representante encontrado:', representante);  // Muestra el representante en la consola
+
+          // Concatenar nombre y apellido del representante
+          const nombreCompleto = `${representante.nombre} ${representante.apellido}`;
+
+          // Agregar el representante a la lista de matriculas
+          this.matriculas = [{ id: representante.id, nombre: nombreCompleto }];
+
+          // Establecer el id del representante como valor seleccionado en el select
+          this.facturaForm.patchValue({
+            detalleFactura: {
+              matriculaId: representante.id
+            }
+          });
+        } else {
+          console.error('Representante no encontrado');
+          // Manejar el caso en que no se encuentre el representante
+        }
+      },
+      (error) => {
+        console.error('Error al buscar representante', error);
+        // Manejar el error, mostrar un mensaje, etc.
+      }
+    );
+  }
+  
 }

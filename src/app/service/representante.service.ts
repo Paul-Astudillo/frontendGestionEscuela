@@ -30,4 +30,8 @@ export class RepresentanteService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/eliminar/${id}`);
   }
+
+  getByCedula(cedula: string): Observable<Representante> {
+    return this.http.get<Representante>(`${this.apiUrl}/buscarCedula/${cedula}`);
+  }
 }

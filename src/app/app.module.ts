@@ -28,6 +28,7 @@ import { ListarFacturaComponent } from './pages/listar-factura/listar-factura.co
 import { FormularioFacturaComponent } from './pages/formulario-factura/formulario-factura.component';
 import { FooterComponent } from './templete/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { LoginComponent } from './pages/login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule ,FormsModule,HttpClientModule,ReactiveFormsModule
+    AppRoutingModule ,FormsModule,HttpClientModule,ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

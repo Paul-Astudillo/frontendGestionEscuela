@@ -17,6 +17,13 @@
           <div class="form-group">
             <label for="cedula">Cédula</label>
             <input type="text" id="cedula" class="form-control" formControlName="cedula" />
+            <div class="input-group">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="buscarUsuarioPorCedula()">
+                  <fa-icon [icon]="faSearch"></fa-icon>
+                </button>
+              </div>
+            </div>
             <div *ngIf="facturaForm.get('cedula')?.invalid && (facturaForm.get('cedula')?.dirty || facturaForm.get('cedula')?.touched)" class="text-danger">
               La cédula es requerida.
             </div>
@@ -110,7 +117,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="matriculaId">Representante</label>
-            <select id="matriculaId" class="form-control" formControlName="matriculaId">
+            <select id="matriculaId" class="form-control" formControlName="matriculaId" >
               <option *ngFor="let matricula of matriculas" [value]="matricula.id">{{ matricula.nombre }}</option>
             </select>
             <div *ngIf="facturaForm.get('detalleFactura')?.get('matriculaId')?.invalid && (facturaForm.get('detalleFactura')?.get('matriculaId')?.dirty || facturaForm.get('detalleFactura')?.get('matriculaId')?.touched)" class="text-danger">
