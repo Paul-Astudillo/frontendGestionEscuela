@@ -1,4 +1,3 @@
-<!-- src/app/pages/formulario-docente/formulario-docente.component.html -->
 <div class="d-flex justify-content-center align-items-center vh-30">
   <div class="container form-container">
     <h1 class="mb-4 text-center">{{ docenteId ? 'Editar Docente' : 'Nuevo Docente' }}</h1>
@@ -45,13 +44,6 @@
           La especialidad es requerida.
         </div>
       </div>
-      <!-- <div class="form-group">
-        <label for="cursoId">Curso</label>
-        <input type="text" id="cursoId" class="form-control" formControlName="cursoId" />
-        <div *ngIf="docenteForm.get('cursoId')?.invalid && (docenteForm.get('cursoId')?.dirty || docenteForm.get('cursoId')?.touched)" class="text-danger">
-          El curso es requerido.
-        </div>
-      </div> -->
       <button type="submit" class="btn btn-primary" [disabled]="docenteForm.invalid">Guardar</button>
     </form>
   </div>
