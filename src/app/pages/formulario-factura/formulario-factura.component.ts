@@ -24,7 +24,7 @@ export class FormularioFacturaComponent implements OnInit {
 
   faSearch = faSearch;
   facturaId: number | null = null;
-  matriculas: { id: number, nombre: string }[] = [];  // Lista de representantes para el select
+  matriculas: { id: number, nombre: string }[] = [];  
   user: string | null = null;
   constructor(
     private authService: AuthService,
@@ -122,61 +122,57 @@ export class FormularioFacturaComponent implements OnInit {
       (representante: Representante) => {
         if (representante) {
           console.log('Representante encontrado:', representante);  // Muestra el representante en la consola
-
-          // Concatenar nombre y apellido del representante
-          const nombreCompleto = `${representante.nombre} ${representante.apellido}`;
-
-          // Agregar el representante a la lista de matriculas
-          this.matriculas = [{ id: representante.id, nombre: nombreCompleto }];
-
-          // Establecer el id del representante como valor seleccionado en el select
-          this.facturaForm.patchValue({
-            detalleFactura: {
-              matriculaId: representante.id
-            }
-          });
         } else {
           console.error('Representante no encontrado');
-          // Manejar el caso en que no se encuentre el representante
-          this.alumnoService.getByCedula(cedula).subscribe(
-            (alumno: Alumno) => {
-              if (alumno && alumno.representante) {
-                this.actualizarRepresentante(alumno.representante);
-              } else {
-                console.error('Estudiante o representante no encontrado');
-                // Manejar el caso en que no se encuentre el representante
-                
-              }
-            },
-            (error) => {
-              console.error('Error al buscar Alumno', error);
-              // Manejar el error, mostrar un mensaje, etc.
-            }
-          );
+          // Manejar el caso en que no se encuentre el representante y buscar al alumno
+          this.buscarAlumnoPorCedula(cedula);
         }
       },
       (error) => {
         console.error('Error al buscar representante', error);
-        // Manejar el error, mostrar un mensaje, etc.
+        // Manejar el caso en que no se encuentre el representante y buscar al alumno
+        this.buscarAlumnoPorCedula(cedula);
       }
     );
   }
-
-  actualizarRepresentante(representante: Representante): void {
-    console.log('Representante encontrado:', representante);  // Muestra el representante en la consola
-
-    // Concatenar nombre y apellido del representante
-    const nombreCompleto = `${representante.nombre} ${representante.apellido}`;
-
-    // Agregar el representante a la lista de matriculas
-    this.matriculas = [{ id: representante.id, nombre: nombreCompleto }];
-
-    // Establecer el id del representante como valor seleccionado en el select
-    this.facturaForm.patchValue({
-      detalleFactura: {
-        matriculaId: representante.id
+  
+  private buscarAlumnoPorCedula(cedula: string): void {
+    this.alumnoService.getByCedula(cedula).subscribe(
+      (alumno: Alumno) => {
+        if (alumno) {
+          console.log('Alumno encontrado:', alumno);  // Muestra el alumno en la consola
+          // Buscar matrícula del alumno encontrado
+          this.alumnoService.getMatriculaByAlumnoId(alumno.id).subscribe(
+            (matricula: Matricula) => {
+              if (matricula) {
+                console.log('Matrícula encontrada:', matricula);  // Muestra la matrícula en la consola
+                // Rellenar el campo de selección de matrícula con el nombre de la matrícula
+                this.matriculas = [{ id: matricula.id, nombre: matricula.nombre }];
+  
+                // Actualizar el campo de matrícula con el nombre de la matrícula y el total con el valor de la matrícula
+                this.facturaForm.patchValue({
+                  detalleFactura: {
+                    matriculaId: matricula.id,
+                    total: matricula.matricula
+                  }
+                });
+              } else {
+                console.error('Matrícula no encontrada');
+              }
+            },
+            (error) => {
+              console.error('Error al buscar matrícula', error);
+            }
+          );
+        } else {
+          console.error('Estudiante no encontrado');
+        }
+      },
+      (error) => {
+        console.error('Error al buscar alumno', error);
       }
-    });
+    );
   }
+  
   
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Alumno } from 'src/domain/alumno';
+import { Matricula } from 'src/domain/matricula';
 import { Representante } from 'src/domain/representante';
 
 @Injectable({
@@ -80,5 +81,9 @@ export class AlumnoService {
 
   getByCedula(cedula: string): Observable<Alumno> {
     return this.http.get<Alumno>(`${this.apiUrl}/buscarCedula/${cedula}`);
+  }
+
+  getMatriculaByAlumnoId(alumnoId: number): Observable<Matricula> {
+    return this.http.get<Matricula>(`${this.apiUrl}/matricula/${alumnoId}`);
   }
 }
